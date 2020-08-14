@@ -1,0 +1,19 @@
+{
+  "name": "jasonleo",
+  "version": "1.0.0",
+  "description": "Developer portfolio for Jason Leo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd surface && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xezian/jasonleo.git"
+  },
+  "author": "Jason A. Leo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xezian/jasonleo/issues"
+  },
+  "homepage": "https://github.com/xezian/jasonleo#readme"
+}
