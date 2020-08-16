@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "app_name": "jasonleo",
+  "stages": {
+    "local": {
+      "environment_variables": {
+        "CHALICE_ENV": "local"
+      }
+    },
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "CHALICE_ENV": "dev"
+      }
+    }
+  }
+}
