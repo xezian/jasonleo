@@ -1,19 +1,20 @@
 <template>
-  <div>
+  <div class="tab-of-con">
     <span class="toggle" @click="isOpen = !isOpen">{{ label }}</span>
     <div v-if="isOpen">
       <ul>
-        <li>Hi</li>
-        <li>I</li>
-        <li>am</li>
-        <li>Jason</li>
-        <li>A.</li>
-        <li>Leo</li>
-        <li>,</li>
-        <li>a</li>
-        <li>web</li>
-        <li>developer</li>
-        <li>.</li>
+        <router-link to="/blog">
+          <li>Blog</li>
+        </router-link>
+        <router-link to="/projects">
+          <li>Projects</li>
+        </router-link>
+        <router-link to="/contact">
+          <li>Contact</li>
+        </router-link>
+        <router-link to="/">
+          <li>Hi</li>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -45,3 +46,9 @@ export default {
   },
 };
 </script>
+
+<style lang="postcss" scoped>
+.tab-of-con {
+  position: absolute;
+}
+</style>
