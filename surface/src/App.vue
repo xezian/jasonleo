@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="wrapper">
     <TableOfContents :open="true" />
+    <router-view />
   </div>
 </template>
 
@@ -15,4 +16,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+</style>
