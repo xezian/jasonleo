@@ -5,3 +5,10 @@ services:
     container_name: dynamodb-local
     ports:
       - "7777:8000"
+    volumes:
+      - dynamodb:/home/dynamodblocal
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-dbPath", "."]
+
+volumes:
+  dynamodb:
+    driver: local
