@@ -1,10 +1,11 @@
 <template>
   <div v-if="$auth.user" class="admin">
-    <h2>ADMIN</h2>
+    <div>ADMIN</div>
     <button @click="logOut">Bye</button>
+    <Post />
   </div>
   <div v-else class="admin">
-    <h2>You are not logged in</h2>
+    <div>You are not logged in</div>
     <input v-model="username" type="email" /><br />
     <input v-model="password" type="password" /><br />
     <button @click="logIn">Try</button>
@@ -12,7 +13,11 @@
 </template>
 
 <script>
+import Post from "../components/Post";
 export default {
+  components: {
+    Post,
+  },
   data: function() {
     return {
       username: null,

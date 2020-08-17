@@ -1,8 +1,8 @@
-import Vue from "vue";
-import App from "./App.vue";
-import api from "./utils/api";
-import router from "./router";
-import Auth from "@aws-amplify/auth";
+import Vue from "vue"
+import App from "./App.vue"
+import api from "./utils/api"
+import router from "./router"
+import Auth from "@aws-amplify/auth"
 
 const config = {
   region: process.env.VUE_APP_COGNITO_REGION,
@@ -15,15 +15,15 @@ const config = {
     redirectSignOut: process.env.VUE_APP_COGNITO_SIGN_OUT_URL,
     responseType: "code",
   },
-};
+}
 
-Auth.configure(config);
-Vue.prototype.$auth = Vue.observable(Auth);
+Auth.configure(config)
+Vue.prototype.$auth = Vue.observable(Auth)
 
-Vue.config.productionTip = false;
-Vue.prototype.$api = api;
+Vue.config.productionTip = false
+Vue.prototype.$api = api
 
 new Vue({
   router,
   render: (h) => h(App),
-}).$mount("#app");
+}).$mount("#app")
