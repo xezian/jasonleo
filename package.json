@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/xezian/jasonleo/issues"
   },
-  "homepage": "https://github.com/xezian/jasonleo#readme"
+  "homepage": "https://github.com/xezian/jasonleo#readme",
+  "dependencies": {}
 }

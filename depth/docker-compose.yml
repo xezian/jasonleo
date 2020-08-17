@@ -8,7 +8,6 @@ services:
     volumes:
       - dynamodb:/home/dynamodblocal
     command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-dbPath", "."]
-
 volumes:
   dynamodb:
     driver: local
