@@ -19,6 +19,9 @@ export default {
       password: null,
     };
   },
+  beforeMount() {
+    this.$auth.currentAuthenticatedUser();
+  },
   methods: {
     async logIn() {
       try {
