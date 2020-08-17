@@ -38,6 +38,13 @@ const routes = [
       import(/* webpackChunkName: "manage" */ "../pages/Contact.vue"),
   },
   {
+    path: "/admin",
+    name: "Admin",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "manage" */ "../pages/Admin.vue"),
+  },
+  {
     path: "*",
     component: () =>
       import(/* webpackChunkName: '404' */ "../components/Landing.vue"),
