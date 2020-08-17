@@ -13,7 +13,7 @@ const config = {
     scope: ["openid", "email"],
     redirectSignIn: process.env.VUE_APP_COGNITO_SIGN_IN_URL,
     redirectSignOut: process.env.VUE_APP_COGNITO_SIGN_OUT_URL,
-    responseType: "token",
+    responseType: "code",
   },
 };
 
