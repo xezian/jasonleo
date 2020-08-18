@@ -4,7 +4,7 @@
   "description": "Developer portfolio for Jason Leo",
   "main": "index.js",
   "scripts": {
-    "dev": "cd surface && npm run serve"
+    "dev": "cd surface && npm run serve & cd depth && docker-compose up & cd depth && . .venv/bin/activate && chalice local --stage local"
   },
   "repository": {
     "type": "git",
