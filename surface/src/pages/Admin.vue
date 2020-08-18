@@ -1,6 +1,6 @@
 <template>
   <div v-if="$auth.user" class="admin">
-    <div>ADMIN</div>
+    ADMIN
     <button @click="logOut">Bye</button>
     <Post />
   </div>
@@ -13,37 +13,37 @@
 </template>
 
 <script>
-import Post from "../components/Post";
+import Post from "../components/Post"
 export default {
   components: {
     Post,
   },
-  data: function() {
+  data: function () {
     return {
       username: null,
       password: null,
-    };
+    }
   },
   beforeMount() {
-    this.$auth.currentAuthenticatedUser();
+    this.$auth.currentAuthenticatedUser()
   },
   methods: {
     async logIn() {
       try {
-        await this.$auth.signIn(this.username, this.password);
+        await this.$auth.signIn(this.username, this.password)
       } catch (error) {
-        console.log("error signing in", error);
+        console.log("error signing in", error)
       }
     },
     async logOut() {
       try {
-        await this.$auth.signOut({ global: true });
+        await this.$auth.signOut({ global: true })
       } catch (error) {
-        console.log("error signing out", error);
+        console.log("error signing out", error)
       }
     },
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>

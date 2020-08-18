@@ -5,6 +5,7 @@
       <p>Title: {{ post.title }}</p>
       <p>Slug: {{ post.slug }}</p>
       <p>Post: {{ post.content }}</p>
+      {{ post }}
     </div>
   </div>
 </template>
