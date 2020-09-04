@@ -1,18 +1,29 @@
 import axios from "axios"
 import { Storage } from "aws-amplify"
 
-const storage = {
-  getBlogPosts: () => {
-    return Storage.get("index.csv", { customPrefix: { public: "blog/" } })
-      .then(async (response) => {
-        const posts = await readInPosts(response)
-        return [null, posts]
-      })
-      .catch((err) => {
-        console.error(err)
-        return [err, null]
-      })
-  },
+let storage
+
+if (process.env.NODE_ENV === "development") {
+  storage = {
+    getBlogPosts: async () => {
+      const data = await readInPosts("/test/index.csv")
+      return [null, data]
+    },
+  }
+} else {
+  storage = {
+    getBlogPosts: () => {
+      return Storage.get("index.csv", { customPrefix: { public: "blog/" } })
+        .then(async (response) => {
+          const posts = await readInPosts(response)
+          return [null, posts]
+        })
+        .catch((err) => {
+          console.error(err)
+          return [err, null]
+        })
+    },
+  }
 }
 
 const readInPosts = (postCsv) => {
