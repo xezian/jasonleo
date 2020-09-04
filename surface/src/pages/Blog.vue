@@ -1,11 +1,11 @@
 <template>
-  <div class="blog">
-    <div>BLOG</div>
+  <div v-if="!onePost" class="bloglist">
+    <div>BLOG POSTS</div>
     <div
       v-for="post in posts"
       :key="post.slug"
       class="blog-listing"
-      @click="goToPost(post.slug)"
+      @click="handleClickPost(post.slug)"
     >
       <p>Title: {{ post.title }}</p>
       <p>Date: {{ post.date }}</p>
@@ -20,10 +20,16 @@ export default {
   data: function () {
     return {
       posts: [],
+      onePost: false,
     }
   },
+  watch: {
+    "$route.params"(newVal) {
+      this.loadPostOrPosts(newVal)
+    },
+  },
   beforeMount() {
-    this.getPosts()
+    this.loadPostOrPosts(this.$route.params)
   },
   methods: {
     async getPosts() {
@@ -32,10 +38,22 @@ export default {
         this.posts = response
       }
     },
-    async goToPost(slug) {
+    async getPost(slug) {
       const [_error, response] = await this.$storage.getOnePost(slug)
       if (response) {
         console.log(response)
+      }
+    },
+    handleClickPost(slug) {
+      this.$router.push(`/blog/${slug}`)
+    },
+    loadPostOrPosts(params) {
+      if (params.postId) {
+        this.onePost = true
+        this.getPost(params.postId)
+      } else {
+        this.onePost = false
+        this.getPosts()
       }
     },
   },
@@ -43,7 +61,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.blog {
+.bloglist {
   width: 100vw;
   display: flex;
   flex-direction: column;
