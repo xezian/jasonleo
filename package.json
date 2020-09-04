@@ -4,7 +4,7 @@
   "description": "Developer portfolio for Jason Leo",
   "main": "index.js",
   "scripts": {
-    "install": "cd surface and npm install",
+    "install": "cd surface && npm install",
     "dev": "cd surface && npm run serve"
   },
   "repository": {
