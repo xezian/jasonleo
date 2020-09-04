@@ -18,23 +18,16 @@ export default {
   },
   methods: {
     async submit() {
-      const formData = new FormData()
-      formData.append("file", this.file)
-      formData.append("title", this.title)
-      formData.append("description", this.description)
-      formData.append("date", new Date().toISOString().split("T")[0])
-      const [_error, response] = await this.$api.post("/blog", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      if (response) {
-        console.log(response)
+      const postData = {
+        file: this.file,
+        title: this.title,
+        description: this.description,
+        date: new Date().toISOString().split("T")[0],
       }
+      this.$storage.postToBlog(postData)
     },
     processFile(event) {
       this.file = event.target.files[0]
-      console.log(this.file)
     },
   },
 }

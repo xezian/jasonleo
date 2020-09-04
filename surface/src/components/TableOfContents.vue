@@ -22,11 +22,6 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      isOpen: false,
-    };
-  },
   props: {
     open: {
       type: Boolean,
@@ -34,17 +29,22 @@ export default {
       default: false,
     },
   },
+  data: function () {
+    return {
+      isOpen: false,
+    }
+  },
   computed: {
     label() {
-      return this.isOpen ? "hide" : "show";
+      return this.isOpen ? "hide" : "show"
     },
   },
   beforeMount() {
     if (this.open) {
-      this.isOpen = true;
+      this.isOpen = true
     }
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>

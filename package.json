@@ -4,7 +4,8 @@
   "description": "Developer portfolio for Jason Leo",
   "main": "index.js",
   "scripts": {
-    "dev": "cd surface && npm run serve & cd depth && docker-compose up & cd depth && . .venv/bin/activate && chalice local --stage local"
+    "install": "cd surface and npm install",
+    "dev": "cd surface && npm run serve"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,6 @@
     "url": "https://github.com/xezian/jasonleo/issues"
   },
   "homepage": "https://github.com/xezian/jasonleo#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {}
 }

@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import TableOfContents from "./components/TableOfContents.vue";
+import TableOfContents from "./components/TableOfContents.vue"
 
 export default {
   name: "App",
   components: {
     TableOfContents,
   },
-};
+}
 </script>
 
 <style>
