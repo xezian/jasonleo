@@ -9,6 +9,10 @@ if (process.env.NODE_ENV === "development") {
       const data = await readInPosts("/test/index.csv")
       return [null, data]
     },
+    getOnePost: async (slug) => {
+      const data = await getThePost(`/test/${slug}.md`)
+      return [null, data]
+    },
   }
 } else {
   storage = {
@@ -24,6 +28,17 @@ if (process.env.NODE_ENV === "development") {
         })
     },
   }
+}
+
+const getThePost = (postMd) => {
+  return axios
+    .get(postMd)
+    .then((response) => {
+      return response.data
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
 
 const readInPosts = (postCsv) => {
