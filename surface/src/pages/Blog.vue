@@ -1,26 +1,34 @@
 <template>
-  <div v-if="!onePost" class="bloglist">
-    <div>BLOG POSTS</div>
-    <div
-      v-for="post in posts"
-      :key="post.slug"
-      class="blog-listing"
-      @click="handleClickPost(post.slug)"
-    >
-      <p>Title: {{ post.title }}</p>
-      <p>Date: {{ post.date }}</p>
-      <p>Description: {{ post.description }}</p>
-      <p>Tags: {{ post.tags }}</p>
+  <div class="blog-box">
+    <div v-if="!onePost">
+      <div>BLOG POSTS</div>
+      <div
+        v-for="listing in posts"
+        :key="listing.slug"
+        class="blog-listing"
+        @click="handleClickPost(listing.slug)"
+      >
+        <p>Title: {{ listing.title }}</p>
+        <p>Date: {{ listing.date }}</p>
+        <p>Description: {{ listing.description }}</p>
+        <p>Tags: {{ listing.tags }}</p>
+      </div>
+    </div>
+    <div v-else class="blog-post">
+      <VueShowdown :markdown="post" :extensions="[showdownHighlight]" />
     </div>
   </div>
 </template>
 
 <script>
+import showdownHighlight from "showdown-highlight"
 export default {
   data: function () {
     return {
       posts: [],
+      post: "",
       onePost: false,
+      showdownHighlight: showdownHighlight,
     }
   },
   watch: {
@@ -41,7 +49,7 @@ export default {
     async getPost(slug) {
       const [_error, response] = await this.$storage.getOnePost(slug)
       if (response) {
-        console.log(response)
+        this.post = response
       }
     },
     handleClickPost(slug) {
@@ -61,7 +69,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.bloglist {
+.blog-box {
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -69,9 +77,38 @@ export default {
 }
 .blog-listing {
   border: 1px solid black;
-  border-radius: 7px 33px 22px 61px;
+  border-radius: 10px 50px 50px 10px;
   width: 30vw;
   cursor: url("/brackets.ico"), auto;
   padding: 10px;
+}
+.blog-post {
+  width: 80vw;
+}
+.blog-post >>> code {
+  padding: 2px 5px;
+  min-width: 100%;
+  border-radius: 5px;
+  background-color: lightgoldenrodyellow;
+  color: dimgray;
+}
+.blog-post >>> pre code {
+  padding: 10px;
+  display: inline-block;
+  background-color: dimgray;
+  color: lightgoldenrodyellow;
+}
+.blog-post >>> blockquote {
+  background-color: whitesmoke;
+  padding: 1px 10px;
+  border-left: 5px solid gainsboro;
+}
+.blog-post >>> blockquote:hover {
+  border-left: 5px solid lightgrey;
+}
+@media only screen and (max-width: 600px) {
+  .blog-post {
+    width: 95vw;
+  }
 }
 </style>

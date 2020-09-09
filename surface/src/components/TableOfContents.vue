@@ -1,7 +1,7 @@
 <template>
-  <div class="tab-of-con">
+  <div>
     <span class="toggle" @click="isOpen = !isOpen">{{ label }}</span>
-    <div v-if="isOpen">
+    <div v-if="isOpen" class="tab-of-con">
       <ul>
         <router-link to="/blog">
           <li>Blog</li>
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     label() {
-      return this.isOpen ? "hide" : "show"
+      return this.isOpen ? "<" : ">"
     },
   },
   beforeMount() {
@@ -50,5 +50,15 @@ export default {
 <style lang="postcss" scoped>
 .tab-of-con {
   position: absolute;
+  background: white;
+  border-radius: 5px 0px;
+  padding: 0px 20px 0px 0px;
+  box-shadow: 0px 0px 20px 3px;
+}
+.toggle {
+  cursor: pointer;
+  position: absolute;
+  left: 3px;
+  z-index: 1;
 }
 </style>

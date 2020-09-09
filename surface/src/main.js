@@ -1,4 +1,5 @@
 import Vue from "vue"
+import VueShowdown from "vue-showdown"
 import Amplify from "aws-amplify"
 import App from "./App.vue"
 import router from "./router"
@@ -37,6 +38,9 @@ if (connectToAWS) {
 
 Vue.config.productionTip = false
 Vue.prototype.$storage = storage
+Vue.use(VueShowdown, {
+  flavor: "github",
+})
 
 new Vue({
   router,
