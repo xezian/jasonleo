@@ -49,16 +49,17 @@ export default {
 
 <style lang="postcss" scoped>
 .tab-of-con {
-  position: absolute;
-  background: white;
-  border-radius: 5px 0px;
+  position: fixed;
+  background: #ffffff6e;
+  border-radius: 0px 0px 5px 0px;
   padding: 0px 20px 0px 0px;
   box-shadow: 0px 0px 20px 3px;
+  z-index: 1;
 }
 .toggle {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   left: 3px;
-  z-index: 1;
+  z-index: 2;
 }
 </style>

@@ -84,6 +84,8 @@ export default {
 }
 .blog-post {
   width: 80vw;
+  padding: 2em;
+  background: linear-gradient(to right top, #e0bed6, #809fa1) fixed;
 }
 .blog-post >>> code {
   padding: 2px 5px;
@@ -99,7 +101,7 @@ export default {
   color: lightgoldenrodyellow;
 }
 .blog-post >>> blockquote {
-  background-color: whitesmoke;
+  background-color: #f5f5f54f;
   padding: 1px 10px;
   border-left: 5px solid gainsboro;
 }
