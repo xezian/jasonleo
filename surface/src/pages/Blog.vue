@@ -76,11 +76,13 @@ export default {
   align-items: center;
 }
 .blog-listing {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px 50px 50px 10px;
   width: 30vw;
   cursor: url("/brackets.ico"), auto;
   padding: 10px;
+  background: linear-gradient(to left top, #147b83, #e485c7);
+  box-shadow: 0px 0px 100px 50px #c1c1ff;
 }
 .blog-post {
   width: 80vw;
