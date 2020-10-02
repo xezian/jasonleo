@@ -53,15 +53,15 @@ export default {
   left: 0;
   background: linear-gradient(to left top, #60afb4, #e4b4d5);
   padding: 0px 20px 0px 0px;
-  box-shadow: 0px 0px 20px 3px #bbd6ff;
+  box-shadow: -25px -25px 25px 40px #bbd6ff;
   border-radius: 0px 0px 5px 0px;
   padding: 0px 20px 0px 0px;
-  z-index: 1;
+  z-index: 2;
 }
 .toggle {
   cursor: pointer;
   position: fixed;
   left: 3px;
-  z-index: 2;
+  z-index: 3;
 }
 </style>
