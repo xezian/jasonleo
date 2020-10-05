@@ -3,7 +3,7 @@
     <div ref="landing" class="landing-strip">
       <div class="background-gradient"></div>
       <div class="foreground-gradient"></div>
-      <div ref="header" class="section section-header left">
+      <div ref="header" class="para section-header left">
         <h2>Hello, friends</h2>
         <h3>My name is Jason Leo</h3>
         <div class="right">
@@ -15,7 +15,7 @@
       <div ref="diamond" class="blue diamond"></div>
       <div ref="square" class="red square"></div>
       <div ref="body" class="section section-body">
-        <p class="right">
+        <p class="right para">
           It is great my privilege to share with you this. Maybe today we will
           imagine the unimaginable.This is an exploration of the wilderness of
           world wide webcraft. Also a demonstration in as ambitious a way as I
@@ -24,12 +24,28 @@
           dispay.
         </p>
         <div class="spacer"></div>
-        <p class="left">
+        <p class="left para">
           In these times, in this context, I feel fortunate. The long drawn
           breath of pause I reminded myself of, has come to settle, in a curve
-          of light, beside my table. As long as I am able to stop looking, you
-          are within reach.
+          of light, beside my table. I invite this listening moment, to complete
+          the consideration I meant to entertain. Where the end begins, the
+          vision exact, the filter graduates, home expands, and all our voices
+          in unison advocate an unencumbered togetherness.
         </p>
+        <div class="spacer"></div>
+        <p class="right para">
+          So with every one available, and these days as we connect via
+          circumstance and cicuitry &mdash; where the circular vestibule of
+          sudden refraction contracts &mdash; I invited these articulations, and
+          embrace the ways we may in our fulfillment find true resolution in the
+          vast untamed wilderness of ideals. Our closest hearted friendships,
+          and our furthest flung notions, the cacauphony of it all, the din, the
+          restless, the impenetrable darkness of an inward abyss. I invite you
+          to join me, in a reimagining of purpose, in an outpuring of universal
+          harmonies, the depth of meaning, the center, the dancer, in becoming
+          true.
+        </p>
+        <div class="spacer"></div>
       </div>
       <h1 class="float-foot-edge">
         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -65,7 +81,7 @@ export default {
     window.removeEventListener("scroll", this.handleScroll)
   },
   methods: {
-    handleScroll: _.debounce(function () {
+    handleScroll() {
       if (this.scrollY < window.scrollY) {
         this.handleDown()
       } else {
@@ -73,46 +89,38 @@ export default {
       }
       this.handleEither()
       this.scrollY = window.scrollY
-    }),
+    },
     handleEither() {
-      const { circle, square, diamond } = this.$refs
+      const { circle, square, diamond, body } = this.$refs
       circle.style.width = `${this.scrollY + 150}px`
       circle.style.height = `${this.scrollY + 150}px`
-      if (this.scrollY > 700) {
-        diamond.style.height = `${this.scrollY - 250}px`
-        diamond.style.width = `${this.scrollY - 250}px`
+      if (this.scrollY > 200) {
+        diamond.style.height = `${this.scrollY + 250}px`
+        diamond.style.width = `${this.scrollY + 250}px`
       }
-      if (this.scrollY > 1000) {
-        square.style.height = `${this.scrollY - 700}px`
-        square.style.width = `${this.scrollY - 700}px`
+      if (this.scrollY > 400) {
+        square.style.height = `${this.scrollY - 100}px`
+        square.style.width = `${this.scrollY - 100}px`
       }
+      const diamondTop = this.diamondTop - this.scrollY * 1.5
+      const squareTop = this.squareTop - this.scrollY * 1.3
+      const bodyTop = this.bodyTop - this.scrollY * 1.1
+      const circleTop = this.circleTop + this.scrollY * 0.3
+      circle.style.top = `${circleTop}px`
+      diamond.style.top = `${diamondTop}px`
+      square.style.top = `${squareTop}px`
+      body.style.top = `${bodyTop}px`
     },
     handleUp() {
-      const { circle, square, diamond, body, header } = this.$refs
-      this.diamondTop = this.diamondTop + 25
-      this.squareTop = this.squareTop + 10
-      this.circleTop = this.circleTop - 5
-      this.bodyTop = this.bodyTop + 25
-      circle.style.top = `${this.circleTop}px`
-      diamond.style.top = `${this.diamondTop}px`
-      square.style.top = `${this.squareTop}px`
-      body.style.top = `${this.bodyTop}px`
+      const { header } = this.$refs
       if (this.scrollY < 600 && header.style.opacity < 1) {
         this.headerOpacity = this.headerOpacity + 0.1
         header.style.opacity = this.headerOpacity
       }
     },
     handleDown() {
-      const { circle, square, diamond, body, header } = this.$refs
-      this.diamondTop = this.diamondTop - 25
-      this.squareTop = this.squareTop - 10
-      this.circleTop = this.circleTop + 5
-      this.bodyTop = this.bodyTop - 25
-      circle.style.top = `${this.circleTop}px`
-      diamond.style.top = `${this.diamondTop}px`
-      square.style.top = `${this.squareTop}px`
-      body.style.top = `${this.bodyTop}px`
-      if (this.scrollY > 200 && header.style.opacity > 0) {
+      const { header } = this.$refs
+      if (header.style.opacity > 0) {
         this.headerOpacity = this.headerOpacity - 0.1
         header.style.opacity = this.headerOpacity
       }
@@ -129,7 +137,7 @@ export default {
   align-items: center;
   width: 100vw;
   height: 3200px;
-  color: white;
+  color: #f3f3f3;
   overflow: hidden;
 }
 .landing-strip div.end-page {
@@ -154,14 +162,19 @@ export default {
   height: 3200px;
 }
 .spacer {
-  margin: 200px 0;
   background: linear-gradient(to right, #81f2faa8, #d488bd98);
   height: 100px;
-  margin: 0;
+  width: 100vw;
+  margin: 100px 0;
 }
 .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 10px;
+}
+.para {
   width: 50%;
 }
 .section-header {
