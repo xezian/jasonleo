@@ -28,9 +28,9 @@
           In these times, in this context, I feel fortunate. The long drawn
           breath of pause I reminded myself of, has come to settle, in a curve
           of light, beside my table. I invite this listening moment, to complete
-          the consideration I meant to entertain. Where the end begins, the
-          vision exact, the filter graduates, home expands, and all our voices
-          in unison advocate an unencumbered togetherness.
+          the consideration we meant to entertain. Where the end begins, the
+          vision exact, the filter graduates, our home expands, and all our
+          voices in unison advocate an unencumbered togetherness.
         </p>
         <div class="spacer"></div>
         <p class="right para">
@@ -41,9 +41,9 @@
           vast untamed wilderness of ideals. Our closest hearted friendships,
           and our furthest flung notions, the cacauphony of it all, the din, the
           restless, the impenetrable darkness of an inward abyss. I invite you
-          to join me, in a reimagining of purpose, in an outpuring of universal
-          harmonies, the depth of meaning, the center, the dancer, in becoming
-          true.
+          to join me, in a reimagining of future purposes, in an outpuring of
+          exhuberent disambiguation, to the depth of our center, to the holder,
+          to the dancer within us, towards becoming true.
         </p>
         <div class="spacer"></div>
       </div>
@@ -66,7 +66,7 @@ export default {
       circleTop: 5,
       diamondTop: 700,
       squareTop: 1000,
-      bodyTop: 1000,
+      bodyTop: window.innerHeight,
       headerOpacity: 1,
     }
   },
@@ -183,8 +183,8 @@ export default {
 }
 .section-body {
   position: fixed;
-  top: 1000px;
-  font-size: 2rem;
+  top: 100vh;
+  font-size: 1.1rem;
   line-height: 2em;
   padding: 20px;
 }
@@ -232,6 +232,9 @@ export default {
   }
   .diamond {
     width: 450px;
+  }
+  .para {
+    width: 99%;
   }
 }
 </style>

@@ -5,13 +5,7 @@ import App from "./App.vue"
 import router from "./router"
 import storage from "./utils/storage"
 
-let connectToAWS = true
-// default connect to AWS to false for development
-if (process.env.NODE_ENV === "development") {
-  connectToAWS = false
-}
-
-if (connectToAWS) {
+if (process.env.VUE_APP_CONNECT_TO_AWS === "yes") {
   Amplify.configure({
     Auth: {
       region: process.env.VUE_APP_COGNITO_REGION,

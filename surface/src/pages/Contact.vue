@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">CONTACT</div>
+  <h2>CONTACT:</h2>
 </template>
 
 <style lang="postcss" scoped>

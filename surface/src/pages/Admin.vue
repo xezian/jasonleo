@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$auth.user" class="admin">
+  <div v-if="!$auth.user" class="admin">
     ADMIN
     <button @click="logOut">Bye</button>
     <Post />

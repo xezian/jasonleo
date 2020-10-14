@@ -3,7 +3,7 @@ import { Storage } from "aws-amplify"
 
 let storage
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
   storage = {
     getBlogPosts: async () => {
       const data = await readInPosts("/test/index.csv")
@@ -26,6 +26,22 @@ if (process.env.NODE_ENV === "development") {
           console.error(err)
           return [err, null]
         })
+    },
+    getOnePost: (slug) => {
+      return Storage.get(`${slug}/${slug}.md`, {
+        customPrefix: { public: "blog/" },
+      })
+        .then(async (response) => {
+          const data = await getThePost(response)
+          return [null, data]
+        })
+        .catch((err) => {
+          console.error(err)
+          return [err, null]
+        })
+    },
+    postToBlog: (postData) => {
+      console.log(postData)
     },
   }
 }

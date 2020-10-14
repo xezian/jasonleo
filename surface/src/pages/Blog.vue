@@ -1,7 +1,7 @@
 <template>
   <div class="blog-box">
     <div v-if="!onePost">
-      <div>BLOG POSTS</div>
+      <h2>POSTS:</h2>
       <div
         v-for="listing in posts"
         :key="listing.slug"
@@ -15,7 +15,9 @@
       </div>
     </div>
     <div v-else class="blog-post">
+      <div class="back-up back-up-top" @click="backUp">&#171;</div>
       <VueShowdown :markdown="post" :extensions="[showdownHighlight]" />
+      <div class="back-up back-up-bottom" @click="backUp">&#171;</div>
     </div>
   </div>
 </template>
@@ -64,11 +66,36 @@ export default {
         this.getPosts()
       }
     },
+    backUp() {
+      this.$router.push("/blog")
+    },
   },
 }
 </script>
 
 <style lang="postcss" scoped>
+.back-up {
+  z-index: 3;
+  font-size: 37pt;
+  cursor: pointer;
+  color: #42baff;
+}
+.back-up:hover {
+  color: #fde830;
+}
+.back-up:active {
+  color: #e877ff;
+}
+.back-up-top {
+  position: relative;
+  left: 20px;
+  top: -40px;
+}
+.back-up-bottom {
+  position: relative;
+  left: 0px;
+  bottom: -40px;
+}
 .blog-box {
   width: 100vw;
   display: flex;
@@ -81,6 +108,7 @@ export default {
   width: 30vw;
   cursor: url("/brackets.ico"), auto;
   padding: 10px;
+  margin: 10px 0;
   background: linear-gradient(to left top, #147b83, #e485c7);
   box-shadow: 0px 0px 100px 50px #c1c1ff;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="projects">PROJECTS</div>
+  <h2>PROJECTS:</h2>
 </template>
 
 <style lang="postcss" scoped>
