@@ -62,18 +62,19 @@
       </div>
     </div>
     <h2>Download my Resume</h2>
-    <div
-      class="resume"
-      aria-label="Resume"
-      @mouseover="hovered = 'resume'"
-      @mouseleave="hovered = ''"
-    >
-      <a href="https://www.linkedin.com/in/jason-a-leo/">
-        <ResumeIcon
-          :transform="hovered !== 'resume' ? 'scale(1.4)' : 'scale(1.5)'"
-          :fill="hovered !== 'resume' ? '#eaf2ff' : '#fff'"
-        />
-      </a>
+    <div class="resume-row">
+      <div
+        aria-label="Resume"
+        @mouseover="hovered = 'resume'"
+        @mouseleave="hovered = ''"
+      >
+        <a href="https://www.linkedin.com/in/jason-a-leo/">
+          <ResumeIcon
+            :transform="hovered !== 'resume' ? 'scale(1.4)' : 'scale(1.5)'"
+            :fill="hovered !== 'resume' ? '#eaf2ff' : '#fff'"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -120,7 +121,7 @@ div.social-row {
   flex-direction: row;
   justify-content: space-around;
 }
-div.resume {
+div.resume-row {
   display: flex;
   flex-direction: column;
   align-items: center;
