@@ -47,7 +47,6 @@ if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
       return Storage.get("index.csv", { customPrefix: { public: "projects/" } })
         .then(async (response) => {
           const posts = await readInPosts(response)
-          console.log(posts)
           return [null, posts]
         })
         .catch((err) => {
