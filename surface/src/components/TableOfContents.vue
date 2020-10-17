@@ -3,69 +3,74 @@
     <TriangleIcon
       class="toggle"
       :fill="hovered !== 'toggle' ? '#eaf2ff' : '#5f5f5f'"
-      :transform="!isOpen && 'scale (-1, 1)'"
+      :transform="!isOpen && 'scale (-1, -1)'"
       :transform-origin="!isOpen && 'center'"
       @mouseover="hovered = 'toggle'"
       @mouseleave="hovered = ''"
       @click="isOpen = !isOpen"
     />
-    <div v-if="isOpen" class="tab-of-con">
-      <ul>
-        <div
-          class="navlink"
-          @mouseover="hovered = 'blog'"
-          @mouseleave="hovered = ''"
-        >
-          <router-link to="/blog">
-            <BlogIcon :fill="hovered !== 'blog' ? '#eaf2ff' : '#5f5f5f'" />
-            Blog
-          </router-link>
-        </div>
-        <div
-          class="navlink"
-          @mouseover="hovered = 'social'"
-          @mouseleave="hovered = ''"
-        >
-          <router-link to="/social">
-            <MeIcon v-if="hovered !== 'social'" fill="#eaf2ff" />
-            <MeUpIcon v-if="hovered === 'social'" fill="#5f5f5f" />
-            Social
-          </router-link>
-        </div>
-        <div
-          class="navlink"
-          @mouseover="hovered = 'projects'"
-          @mouseleave="hovered = ''"
-        >
-          <router-link to="/projects">
-            <WorkIcon :fill="hovered !== 'projects' ? '#eaf2ff' : '#5f5f5f'" />
-            Examples
-          </router-link>
-        </div>
-        <div
-          class="navlink"
-          @mouseover="hovered = 'contact'"
-          @mouseleave="hovered = ''"
-        >
-          <router-link to="/contact">
-            <ContactIcon
-              :fill="hovered !== 'contact' ? '#eaf2ff' : '#5f5f5f'"
-            />
-            Contact
-          </router-link>
-        </div>
-        <div
-          class="navlink"
-          @mouseover="hovered = 'hello'"
-          @mouseleave="hovered = ''"
-        >
-          <router-link to="/">
-            <HelloIcon :fill="hovered !== 'hello' ? '#eaf2ff' : '#5f5f5f'" />
-            Hello
-          </router-link>
-        </div>
-      </ul>
-    </div>
+    <transition name="slide-open">
+      <div v-if="isOpen" class="tab-of-con">
+        <ul>
+          <div
+            class="navlink"
+            @mouseover="hovered = 'me'"
+            @mouseleave="hovered = ''"
+          >
+            <router-link to="/">
+              <MeIcon v-if="hovered !== 'me'" fill="#eaf2ff" />
+              <MeUpIcon v-if="hovered === 'me'" fill="#5f5f5f" />
+              Jason Leo
+            </router-link>
+          </div>
+          <div
+            class="navlink"
+            @mouseover="hovered = 'blog'"
+            @mouseleave="hovered = ''"
+          >
+            <router-link to="/blog">
+              <BlogIcon :fill="hovered !== 'blog' ? '#eaf2ff' : '#5f5f5f'" />
+              Blog
+            </router-link>
+          </div>
+          <div
+            class="navlink"
+            @mouseover="hovered = 'projects'"
+            @mouseleave="hovered = ''"
+          >
+            <router-link to="/projects">
+              <WorkIcon
+                :fill="hovered !== 'projects' ? '#eaf2ff' : '#5f5f5f'"
+              />
+              Examples
+            </router-link>
+          </div>
+          <div
+            class="navlink"
+            @mouseover="hovered = 'contact'"
+            @mouseleave="hovered = ''"
+          >
+            <router-link to="/contact">
+              <ContactIcon
+                :fill="hovered !== 'contact' ? '#eaf2ff' : '#5f5f5f'"
+              />
+              Contact
+            </router-link>
+          </div>
+          <div
+            class="navlink"
+            @mouseover="hovered = 'hello'"
+            @mouseleave="hovered = ''"
+            @click="hiFive"
+          >
+            <a href="#">
+              <HelloIcon :fill="hovered !== 'hello' ? '#eaf2ff' : '#5f5f5f'" />
+              Hi
+            </a>
+          </div>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -105,10 +110,23 @@ export default {
       this.isOpen = true
     }
   },
+  methods: {
+    hiFive() {
+      alert("hi five")
+    },
+  },
 }
 </script>
 
 <style lang="postcss" scoped>
+.slide-open-enter-active,
+.slide-open-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-open-enter,
+.slide-open-leave-to {
+  transform: translateX(-300px) translateY(-300px);
+}
 .tab-of-con {
   position: fixed;
   left: 0;

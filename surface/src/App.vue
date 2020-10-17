@@ -17,9 +17,25 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&family=Thasadith:wght@700&display=swap");
 html,
 body {
   margin: 0;
+  color: #202020;
+}
+html,
+body,
+h1,
+h2 {
+  font-family: "Thasadith", sans-serif;
+}
+p,
+h5 {
+  font-family: "Montserrat", sans-serif;
+}
+h4,
+h3 {
+  font-family: "Sansita Swashed", cursive;
 }
 .gradient {
   display: flex;

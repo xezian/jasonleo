@@ -1,7 +1,6 @@
 <template>
   <div class="blog-box">
     <div v-if="!onePost">
-      <h2>POSTS:</h2>
       <div
         v-for="listing in posts"
         :key="listing.slug"
@@ -75,7 +74,7 @@ export default {
 
 <style lang="postcss" scoped>
 .back-up {
-  z-index: 3;
+  z-index: 1;
   font-size: 37pt;
   cursor: pointer;
   color: #42baff;
@@ -104,10 +103,10 @@ export default {
 }
 .blog-listing {
   /* border: 1px solid black; */
-  border-radius: 10px 50px 50px 10px;
+  border-radius: 10px 60px 50px 10px;
   width: 30vw;
   cursor: url("/brackets.ico"), auto;
-  padding: 10px;
+  padding: 15px;
   margin: 10px 0;
   background: linear-gradient(to left top, #147b83, #e485c7);
   box-shadow: 0px 0px 100px 50px #c1c1ff;

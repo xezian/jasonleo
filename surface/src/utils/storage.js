@@ -6,11 +6,11 @@ let storage
 if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
   storage = {
     getBlogPosts: async () => {
-      const data = await readInPosts("/test/index.csv")
+      const data = await readInPosts("/test/blog/index.csv")
       return [null, data]
     },
     getOnePost: async (slug) => {
-      const data = await getThePost(`/test/${slug}.md`)
+      const data = await getThePost(`/test/blog/${slug}.md`)
       return [null, data]
     },
   }
@@ -43,6 +43,31 @@ if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
     postToBlog: (postData) => {
       console.log(postData)
     },
+    getProjects: () => {
+      return Storage.get("index.csv", { customPrefix: { public: "projects/" } })
+        .then(async (response) => {
+          const posts = await readInPosts(response)
+          console.log(posts)
+          return [null, posts]
+        })
+        .catch((err) => {
+          console.error(err)
+          return [err, null]
+        })
+    },
+    getOneProject: (slug) => {
+      return Storage.get(`${slug}.md`, {
+        customPrefix: { public: "projects/" },
+      })
+        .then(async (response) => {
+          const data = await getThePost(response)
+          return [null, data]
+        })
+        .catch((err) => {
+          console.error(err)
+          return [err, null]
+        })
+    },
   }
 }
 
@@ -64,14 +89,19 @@ const readInPosts = (postCsv) => {
       const lines = response.data.split(/\r\n|\n/)
       const posts = []
       for (let i = 1; i < lines.length; i++) {
+        const columns = lines[0].split(",")
         const commaseps = lines[i].split(/,|"/)
-        posts.push({
-          title: commaseps[0],
-          description: commaseps[1],
-          date: commaseps[2],
-          slug: commaseps[3],
-          tags: commaseps.slice(5, commaseps.length - 1).join(),
-        })
+        const onePost = Object.fromEntries(
+          columns.map((col, ix) => {
+            if (ix === columns.length - 1) {
+              commaseps[ix] = commaseps
+                .slice(ix + 1, commaseps.length - 1)
+                .join()
+            }
+            return [col, commaseps[ix]]
+          }),
+        )
+        posts.push(onePost)
       }
       return posts
     })

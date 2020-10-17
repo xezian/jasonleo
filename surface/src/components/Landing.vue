@@ -51,6 +51,15 @@
         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       </h1>
       <div class="end-page">
+        <div
+          class="personicon"
+          @mouseover="hovered = true"
+          @mouseleave="hovered = false"
+          @click="goUp"
+        >
+          <MeUpIcon v-if="!hovered" fill="#5f5f5f" />
+          <MeIcon v-if="hovered" fill="#eaf2ff" />
+        </div>
         <h1>XXXXXXXXX</h1>
       </div>
     </div>
@@ -59,7 +68,13 @@
 
 <script>
 import _ from "lodash"
+import MeUpIcon from "../assets/human.svg"
+import MeIcon from "../assets/human-male.svg"
 export default {
+  components: {
+    MeUpIcon,
+    MeIcon,
+  },
   data() {
     return {
       scrollY: 0,
@@ -68,6 +83,7 @@ export default {
       squareTop: 1000,
       bodyTop: window.innerHeight,
       headerOpacity: 1,
+      hovered: false,
     }
   },
   created() {
@@ -125,6 +141,9 @@ export default {
         header.style.opacity = this.headerOpacity
       }
     },
+    goUp() {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    },
   },
 }
 </script>
@@ -143,6 +162,7 @@ export default {
 .landing-strip div.end-page {
   z-index: 1;
   margin-top: auto;
+  text-align: center;
 }
 .landing-strip h1.float-foot-edge {
   z-index: 1;
@@ -225,6 +245,9 @@ export default {
 }
 .right {
   text-align: right;
+}
+.personicon {
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   .section {
