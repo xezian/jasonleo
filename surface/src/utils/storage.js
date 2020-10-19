@@ -67,6 +67,7 @@ if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
           return [err, null]
         })
     },
+    ...Storage,
   }
 }
 

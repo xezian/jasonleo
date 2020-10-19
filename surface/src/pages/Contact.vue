@@ -68,7 +68,7 @@
         @mouseover="hovered = 'resume'"
         @mouseleave="hovered = ''"
       >
-        <a href="https://www.linkedin.com/in/jason-a-leo/">
+        <a :href="downloadResume" target="blank" download="Jason Leo.pdf">
           <ResumeIcon
             :transform="hovered !== 'resume' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'resume' ? '#eaf2ff' : '#fff'"
@@ -96,6 +96,7 @@ export default {
   data() {
     return {
       hovered: "",
+      downloadResume: null,
     }
   },
   computed: {
@@ -104,6 +105,11 @@ export default {
         navigator.userAgent,
       )
     },
+  },
+  beforeMount() {
+    this.$storage.get("Jason A. Leo Resume Oct 2020.pdf").then((response) => {
+      this.downloadResume = response
+    })
   },
 }
 </script>
