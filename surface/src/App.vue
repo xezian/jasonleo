@@ -37,6 +37,9 @@ h4,
 h3 {
   font-family: "Sansita Swashed", cursive;
 }
+.content {
+  padding-top: 3em;
+}
 .gradient {
   display: flex;
   flex-direction: column;

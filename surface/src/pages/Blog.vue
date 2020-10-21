@@ -99,6 +99,7 @@ export default {
 }
 .blog-box {
   width: 100vw;
+  padding-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;

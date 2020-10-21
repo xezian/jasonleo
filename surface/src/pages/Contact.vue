@@ -115,6 +115,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.contact {
+  padding-top: 5em;
+}
 .contact a {
   text-decoration: none;
   color: #fff;

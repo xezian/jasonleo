@@ -181,6 +181,7 @@ export default {
 }
 .section-header {
   position: fixed;
+  top: 2em;
   font-size: 2.5em;
 }
 .section-body {

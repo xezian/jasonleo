@@ -152,6 +152,9 @@ export default {
   left: 0px;
   bottom: -40px;
 }
+.everything {
+  padding-top: 5em;
+}
 .center-content {
   width: 100vw;
   display: flex;
@@ -159,7 +162,7 @@ export default {
   align-items: center;
 }
 .accomplishments {
-  width: 80vw;
+  width: 70vw;
   padding: 2em;
 }
 .project-list {
