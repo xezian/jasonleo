@@ -98,16 +98,11 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (this.scrollY < window.scrollY) {
-        this.handleDown()
-      } else {
-        this.handleUp()
-      }
       this.handleEither()
       this.scrollY = window.scrollY
     },
     handleEither() {
-      const { circle, square, diamond, body } = this.$refs
+      const { circle, square, diamond, body, header } = this.$refs
       circle.style.width = `${this.scrollY + 150}px`
       circle.style.height = `${this.scrollY + 150}px`
       if (this.scrollY > 200) {
@@ -126,20 +121,7 @@ export default {
       diamond.style.top = `${diamondTop}px`
       square.style.top = `${squareTop}px`
       body.style.top = `${bodyTop}px`
-    },
-    handleUp() {
-      const { header } = this.$refs
-      if (this.scrollY < 600 && header.style.opacity < 1) {
-        this.headerOpacity = this.headerOpacity + 0.1
-        header.style.opacity = this.headerOpacity
-      }
-    },
-    handleDown() {
-      const { header } = this.$refs
-      if (header.style.opacity > 0) {
-        this.headerOpacity = this.headerOpacity - 0.1
-        header.style.opacity = this.headerOpacity
-      }
+      header.style.opacity = (400 - this.scrollY) / 400
     },
     goUp() {
       window.scrollTo({ top: 0, behavior: "smooth" })

@@ -8,27 +8,27 @@ const routes = [
     path: "/blog",
     name: "Blog",
     props: true,
-    component: () => import(/* webpackChunkName: "all" */ "../pages/Blog.vue"),
+    component: () => import(/* webpackChunkName: "blog" */ "../pages/Blog.vue"),
   },
   {
     path: "/blog/:postId",
     name: "BlogPost",
     props: true,
-    component: () => import(/* webpackChunkName: "all" */ "../pages/Blog.vue"),
+    component: () => import(/* webpackChunkName: "blog" */ "../pages/Blog.vue"),
   },
   {
-    path: "/projects",
-    name: "Projects",
+    path: "/about",
+    name: "About",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "projects" */ "../pages/Projects.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/About.vue"),
   },
   {
-    path: "/projects/:projectId",
+    path: "/about/:projectId",
     name: "OneProject",
     props: true,
     component: () =>
-      import(/* webpackChunkName: "project" */ "../pages/Projects.vue"),
+      import(/* webpackChunkName: "project" */ "../pages/About.vue"),
   },
   {
     path: "/contact",

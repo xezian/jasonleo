@@ -10,7 +10,9 @@
         <p>Title: {{ listing.title }}</p>
         <p>Date: {{ listing.date }}</p>
         <p>Description: {{ listing.description }}</p>
-        <p>Tags: {{ listing.tags }}</p>
+        <div v-for="tag in listing.tags" :key="tag" class="tag-badge">
+          {{ tag }}
+        </div>
       </div>
     </div>
     <div v-else class="blog-post">
@@ -110,6 +112,14 @@ export default {
   margin: 10px 0;
   background: linear-gradient(to left top, #147b83, #e485c7);
   box-shadow: 0px 0px 100px 50px #c1c1ff;
+}
+.tag-badge {
+  border: 1px solid #4f4f91;
+  background: #4f4f917c;
+  color: #f1f1f1;
+  border-radius: 13px;
+  width: fit-content;
+  padding: 0 7px;
 }
 .blog-post {
   width: 80vw;

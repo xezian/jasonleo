@@ -25,24 +25,22 @@
           </div>
           <div
             class="navlink"
+            @mouseover="hovered = 'about'"
+            @mouseleave="hovered = ''"
+          >
+            <router-link to="/about">
+              <StarIcon :fill="hovered !== 'about' ? '#eaf2ff' : '#5f5f5f'" />
+              About
+            </router-link>
+          </div>
+          <div
+            class="navlink"
             @mouseover="hovered = 'blog'"
             @mouseleave="hovered = ''"
           >
             <router-link to="/blog">
               <BlogIcon :fill="hovered !== 'blog' ? '#eaf2ff' : '#5f5f5f'" />
               Blog
-            </router-link>
-          </div>
-          <div
-            class="navlink"
-            @mouseover="hovered = 'projects'"
-            @mouseleave="hovered = ''"
-          >
-            <router-link to="/projects">
-              <WorkIcon
-                :fill="hovered !== 'projects' ? '#eaf2ff' : '#5f5f5f'"
-              />
-              Examples
             </router-link>
           </div>
           <div
@@ -77,20 +75,20 @@
 <script>
 import HelloIcon from "../assets/hand.svg"
 import ContactIcon from "../assets/card-account-mail.svg"
-import WorkIcon from "../assets/iframe-outline.svg"
 import BlogIcon from "../assets/drawing-box.svg"
 import MeUpIcon from "../assets/human.svg"
 import MeIcon from "../assets/human-male.svg"
+import StarIcon from "../assets/star-outline.svg"
 import TriangleIcon from "../assets/triangle.svg"
 export default {
   components: {
     HelloIcon,
     ContactIcon,
-    WorkIcon,
     BlogIcon,
     MeIcon,
     MeUpIcon,
     TriangleIcon,
+    StarIcon,
   },
   props: {
     open: {

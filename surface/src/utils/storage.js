@@ -67,6 +67,7 @@ if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
           return [err, null]
         })
     },
+    axios,
     ...Storage,
   }
 }
@@ -94,9 +95,7 @@ const readInPosts = (postCsv) => {
         const onePost = Object.fromEntries(
           columns.map((col, ix) => {
             if (ix === columns.length - 1) {
-              commaseps[ix] = commaseps
-                .slice(ix + 1, commaseps.length - 1)
-                .join()
+              commaseps[ix] = commaseps.slice(ix + 1, commaseps.length - 1)
             }
             return [col, commaseps[ix]]
           }),
