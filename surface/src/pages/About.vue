@@ -26,11 +26,18 @@
             class="listing"
             @click="handleClick(listing.slug)"
           >
-            <h2>{{ listing.title }}</h2>
+            <h2>
+              {{ listing.title }}
+            </h2>
+            <div class="icon-row">
+              <div class="icon">
+                <object
+                  :data="`https://jason-leo.s3.amazonaws.com/projects/images/${listing.cover}`"
+                  type="image/svg+xml"
+                />
+              </div>
+            </div>
             <p class="describe">{{ listing.description }}</p>
-            <img
-              :href="`https://jason-leo.s3.amazonaws.com/blog/images/${listing.cover}`"
-            />
           </div>
         </div>
         <h1 id="side-work">Side Work</h1>
@@ -41,17 +48,24 @@
             class="listing"
             @click="handleClick(listing.slug)"
           >
-            <h2>{{ listing.title }}</h2>
+            <h2>
+              {{ listing.title }}
+            </h2>
+            <div class="icon-row">
+              <div class="icon">
+                <object
+                  :data="`https://jason-leo.s3.amazonaws.com/projects/images/${listing.cover}`"
+                  type="image/svg+xml"
+                />
+              </div>
+            </div>
             <p class="describe">{{ listing.description }}</p>
-            <img
-              :href="`https://jason-leo.s3.amazonaws.com/blog/images/${listing.cover}`"
-            />
           </div>
         </div>
       </div>
       <div v-if="project.length" class="project-container" @click="close">
         <div class="project">
-          <div class="close" @click="close">&#10005;</div>
+          <div id="close" class="close" @click="close">&#10005;</div>
           <VueShowdown :markdown="project" :extensions="[showdownHighlight]" />
         </div>
       </div>
@@ -115,8 +129,18 @@ export default {
       this.getProject(slug)
     },
     close(e) {
-      if (e.target.classList.contains("project")) return
-      this.project = ""
+      if (e.target.id === "close") {
+        this.project = ""
+      } else {
+        const classList = [
+          ...e.target.classList,
+          ...e.target.parentElement.classList,
+          ...e.target.parentElement.parentElement.classList,
+        ]
+        if (!classList.includes("project")) {
+          this.project = ""
+        }
+      }
     },
   },
 }
@@ -150,10 +174,17 @@ export default {
   padding: 2em;
 }
 .row-nav {
+  position: fixed;
   width: 100%;
+  top: 0;
+  left: 0;
+  height: 85px;
+  font-size: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: flex-end;
+  background: linear-gradient(to right, #ce79d1a4, #73a1dda9);
 }
 .row-nav a {
   text-decoration: none;
@@ -163,6 +194,23 @@ export default {
   text-decoration: none;
   color: #3f3f3f;
 }
+.icon-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #f5f5f5;
+  background-color: #f5f5f541;
+}
+.icon object {
+  pointer-events: none;
+}
 .project-list {
   width: 80vw;
   display: grid;
@@ -171,7 +219,6 @@ export default {
   justify-items: center;
 }
 .listing {
-  /* border: 1px solid black; */
   border-radius: 10px;
   width: calc(250px - 1rem);
   cursor: url("/brackets.ico"), auto;
@@ -224,12 +271,29 @@ export default {
 .project >>> blockquote:hover {
   border-left: 5px solid lightgrey;
 }
+@media only screen and (max-width: 800px) {
+  .row-nav {
+    height: 103px;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .row-nav {
+    height: 125px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .project {
     width: 95vw;
   }
   .accomplishments {
     width: 95vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .row-nav {
+    height: 100px;
+    font-size: 0.8rem;
   }
 }
 </style>
