@@ -1,0 +1,4 @@
+[build]
+  base    = "surface"
+  publish = "surface/dist/"
+  command = "npm run build"
