@@ -17,14 +17,14 @@
       </div>
     </div>
     <div class="center-content">
-      <div v-if="!oneProject" class="center-content">
+      <div class="center-content">
         <h1 id="side-projects">Side Projects</h1>
         <div class="project-list">
           <div
             v-for="listing in sideProjects"
             :key="listing.slug"
             class="listing"
-            @click="handleClickProject(listing.slug)"
+            @click="handleClick(listing.slug)"
           >
             <h2>{{ listing.title }}</h2>
             <p class="describe">{{ listing.description }}</p>
@@ -39,7 +39,7 @@
             v-for="listing in sideWork"
             :key="listing.slug"
             class="listing"
-            @click="handleClickProject(listing.slug)"
+            @click="handleClick(listing.slug)"
           >
             <h2>{{ listing.title }}</h2>
             <p class="describe">{{ listing.description }}</p>
@@ -49,10 +49,11 @@
           </div>
         </div>
       </div>
-      <div v-else class="project">
-        <div class="back-up back-up-top" @click="backUp">&#171;</div>
-        <VueShowdown :markdown="project" :extensions="[showdownHighlight]" />
-        <div class="back-up back-up-bottom" @click="backUp">&#171;</div>
+      <div v-if="project.length" class="project-container" @click="close">
+        <div class="project">
+          <div class="close" @click="close">&#10005;</div>
+          <VueShowdown :markdown="project" :extensions="[showdownHighlight]" />
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +66,6 @@ export default {
     return {
       projects: [],
       project: "",
-      oneProject: false,
       showdownHighlight: showdownHighlight,
       about: null,
     }
@@ -82,13 +82,8 @@ export default {
       })
     },
   },
-  watch: {
-    "$route.params"(newVal) {
-      this.loadProjectOrProjects(newVal)
-    },
-  },
   beforeMount() {
-    this.loadProjectOrProjects(this.$route.params)
+    this.getProjects()
     this.getAbout()
   },
   methods: {
@@ -116,47 +111,30 @@ export default {
           })
       })
     },
-    handleClickProject(slug) {
-      this.$router.push(`/about/${slug}`)
+    handleClick(slug) {
+      this.getProject(slug)
     },
-    loadProjectOrProjects(params) {
-      if (params.projectId) {
-        this.oneProject = true
-        this.getProject(params.projectId)
-      } else {
-        this.oneProject = false
-        this.getProjects()
-      }
-    },
-    backUp() {
-      this.$router.push("/about")
+    close(e) {
+      if (e.target.classList.contains("project")) return
+      this.project = ""
     },
   },
 }
 </script>
 
 <style lang="postcss" scoped>
-.back-up {
+.close {
   z-index: 1;
-  font-size: 37pt;
+  font-size: 17pt;
   cursor: pointer;
   color: #42baff;
+  width: fit-content;
 }
-.back-up:hover {
+.close:hover {
   color: #fde830;
 }
-.back-up:active {
+.close:active {
   color: #e877ff;
-}
-.back-up-top {
-  position: relative;
-  left: 20px;
-  top: -40px;
-}
-.back-up-bottom {
-  position: relative;
-  left: 0px;
-  bottom: -40px;
 }
 .everything {
   padding-top: 5em;
@@ -207,9 +185,22 @@ export default {
   padding: 10px 15px;
   background: linear-gradient(to right, #b99cb1, #87c1c5) fixed;
 }
+.project-container {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #0000006c;
+}
 .project {
-  width: 80vw;
   padding: 2em;
+  border-radius: 3px;
+  max-height: 90vh;
+  overflow: auto;
   background: linear-gradient(to right top, #e0bed6, #809fa1) fixed;
 }
 .project >>> code {

@@ -24,13 +24,6 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../pages/About.vue"),
   },
   {
-    path: "/about/:projectId",
-    name: "OneProject",
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "project" */ "../pages/About.vue"),
-  },
-  {
     path: "/contact",
     name: "Contact",
     props: true,
