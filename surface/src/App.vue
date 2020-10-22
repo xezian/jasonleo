@@ -30,10 +30,10 @@ h2 {
   font-family: "Thasadith", sans-serif;
 }
 p,
+h4,
 h5 {
   font-family: "Montserrat", sans-serif;
 }
-h4,
 h3 {
   font-family: "Sansita Swashed", cursive;
 }

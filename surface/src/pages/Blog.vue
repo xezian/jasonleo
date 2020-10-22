@@ -121,6 +121,7 @@ export default {
   border-radius: 13px;
   width: fit-content;
   padding: 0 7px;
+  margin: 2px 0;
 }
 .blog-post {
   width: 80vw;

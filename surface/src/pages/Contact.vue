@@ -17,7 +17,7 @@
         @mouseover="hovered = 'github'"
         @mouseleave="hovered = ''"
       >
-        <a href="https://github.com/xezian">
+        <a href="https://github.com/xezian" target="blank" noopener noreferrer>
           <GitHubIcon
             :transform="hovered !== 'github' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'github' ? '#eaf2ff' : '#fff'"
@@ -29,7 +29,12 @@
         @mouseover="hovered = 'so'"
         @mouseleave="hovered = ''"
       >
-        <a href="https://stackoverflow.com/users/8524758/jsonaleo">
+        <a
+          href="https://stackoverflow.com/users/8524758/jsonaleo"
+          target="_blank"
+          noopener
+          noreferrer
+        >
           <SOIcon
             :transform="hovered !== 'so' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'so' ? '#eaf2ff' : '#fff'"
@@ -41,7 +46,12 @@
         @mouseover="hovered = 'twitter'"
         @mouseleave="hovered = ''"
       >
-        <a href="https://twitter.com/JSONaleo">
+        <a
+          href="https://twitter.com/JSONaleo"
+          target="_blank"
+          noopener
+          noreferrer
+        >
           <TwitterIcon
             :transform="hovered !== 'twitter' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'twitter' ? '#eaf2ff' : '#fff'"
@@ -53,7 +63,12 @@
         @mouseover="hovered = 'linkedin'"
         @mouseleave="hovered = ''"
       >
-        <a href="https://www.linkedin.com/in/jason-a-leo/">
+        <a
+          href="https://www.linkedin.com/in/jason-a-leo/"
+          target="_blank"
+          noopener
+          noreferrer
+        >
           <LinkedInIcon
             :transform="hovered !== 'linkedin' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'linkedin' ? '#eaf2ff' : '#fff'"
@@ -68,7 +83,7 @@
         @mouseover="hovered = 'resume'"
         @mouseleave="hovered = ''"
       >
-        <a :href="downloadResume" target="blank" download="Jason Leo.pdf">
+        <a :href="downloadResume" target="_blank" download="Jason Leo.pdf">
           <ResumeIcon
             :transform="hovered !== 'resume' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'resume' ? '#eaf2ff' : '#fff'"

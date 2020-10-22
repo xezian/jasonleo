@@ -8,12 +8,18 @@
         <h3>My name is Jason Leo</h3>
         <div class="right">
           <h4>I am a web developer</h4>
-          <h5>And this is my website</h5>
+          <h5>Welcome to my website</h5>
         </div>
       </div>
       <div ref="circle" class="yellow circle"></div>
       <div ref="diamond" class="blue diamond"></div>
       <div ref="square" class="red square"></div>
+      <p class="right para disclaimer">
+        Please feel free to scroll around, click, input, observe, and inspect
+        anything you like. I have tried to represent myself accurately in and
+        around these pages, while experimenting with serverless development
+        using AWS s3 buckets and VueJS.
+      </p>
       <div ref="body" class="section section-body">
         <p class="right para">
           It is great my privilege to share with you this. Maybe today we will
@@ -81,7 +87,7 @@ export default {
       circleTop: 5,
       diamondTop: 700,
       squareTop: 1000,
-      bodyTop: window.innerHeight,
+      bodyTop: window.innerHeight + 300,
       headerOpacity: 1,
       hovered: false,
     }
@@ -179,16 +185,23 @@ export default {
 .para {
   width: 50%;
 }
+.disclaimer {
+  position: absolute;
+  top: 70vh;
+}
 .section-header {
   position: fixed;
   top: 2em;
   font-size: 2.5em;
 }
+.section-header div p {
+  font-size: 1.2rem;
+}
 .section-body {
   position: fixed;
   top: 100vh;
   font-size: 1.1rem;
-  line-height: 2em;
+  line-height: 2rem;
   padding: 20px;
 }
 .circle {
@@ -232,7 +245,23 @@ export default {
 .personicon {
   cursor: pointer;
 }
+@media only screen and (max-width: 1000px) {
+  .para {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .section-header {
+    font-size: 1.8em;
+  }
+  .para {
+    width: 70%;
+  }
+}
 @media only screen and (max-width: 600px) {
+  .section-header {
+    font-size: 1.8em;
+  }
   .section {
     width: 75%;
   }
@@ -240,7 +269,7 @@ export default {
     width: 450px;
   }
   .para {
-    width: 99%;
+    width: 90%;
   }
 }
 </style>

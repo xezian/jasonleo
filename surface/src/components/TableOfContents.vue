@@ -47,10 +47,10 @@
             @mouseover="hovered = 'me'"
             @mouseleave="hovered = ''"
           >
-            <router-link to="/">
+            <router-link :style="!bar && 'flex-direction:row;'" to="/">
               <MeIcon v-if="hovered !== 'me'" fill="#eaf2ff" />
               <MeUpIcon v-if="hovered === 'me'" fill="#5f5f5f" />
-              Jason Leo
+              <span :class="`${bar && 'icon-label'}`">Jason Leo</span>
             </router-link>
           </div>
           <div
@@ -58,9 +58,9 @@
             @mouseover="hovered = 'about'"
             @mouseleave="hovered = ''"
           >
-            <router-link to="/about">
+            <router-link :style="!bar && 'flex-direction:row;'" to="/about">
               <StarIcon :fill="hovered !== 'about' ? '#eaf2ff' : '#5f5f5f'" />
-              About
+              <span :class="`${bar && 'icon-label'}`">About</span>
             </router-link>
           </div>
           <div
@@ -68,9 +68,9 @@
             @mouseover="hovered = 'blog'"
             @mouseleave="hovered = ''"
           >
-            <router-link to="/blog">
+            <router-link :style="!bar && 'flex-direction:row;'" to="/blog">
               <BlogIcon :fill="hovered !== 'blog' ? '#eaf2ff' : '#5f5f5f'" />
-              Blog
+              <span :class="`${bar && 'icon-label'}`">Blog</span>
             </router-link>
           </div>
           <div
@@ -78,11 +78,11 @@
             @mouseover="hovered = 'contact'"
             @mouseleave="hovered = ''"
           >
-            <router-link to="/contact">
+            <router-link :style="!bar && 'flex-direction:row;'" to="/contact">
               <ContactIcon
                 :fill="hovered !== 'contact' ? '#eaf2ff' : '#5f5f5f'"
               />
-              Contact
+              <span :class="`${bar && 'icon-label'}`">Contact</span>
             </router-link>
           </div>
           <div
@@ -91,9 +91,9 @@
             @mouseleave="hovered = ''"
             @click="hiFive"
           >
-            <a href="#">
+            <a :style="!bar && 'flex-direction:row;'" href="#">
               <HelloIcon :fill="hovered !== 'hello' ? '#eaf2ff' : '#5f5f5f'" />
-              Hi
+              <span :class="`${bar && 'icon-label'}`">Hi</span>
             </a>
           </div>
         </ul>
@@ -226,6 +226,7 @@ export default {
   text-decoration: none;
   color: #eaf2ff;
   padding: 3px 0px;
+  white-space: nowrap;
 }
 .tab-of-con div.navlink a:hover {
   color: #5f5f5f;
@@ -278,5 +279,18 @@ export default {
 .toggle-right {
   left: auto;
   right: 7px;
+}
+@media only screen and (max-width: 800px) {
+  .tab-of-con div.navlink a {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .tab-of-con div.navlink a {
+    flex-direction: row;
+  }
+  .icon-label {
+    display: none;
+  }
 }
 </style>

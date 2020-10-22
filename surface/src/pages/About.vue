@@ -1,18 +1,24 @@
 <template>
   <div class="everything">
     <div class="center-content">
-      <h2>Accomplishments</h2>
-      <div class="accomplishments">
+      <div class="row-nav">
+        <a href="#accomplishments">Professional Accomplishments</a>
+        <a href="#technologies">Technologies and Experience</a>
+        <a href="#off-sprint">Off Sprint</a>
+        <a href="#side-projects">Side Projects</a>
+        <a href="#side-work">Side Work</a>
+      </div>
+      <div class="about">
         <VueShowdown
-          v-if="accomplishments"
-          :markdown="accomplishments"
+          v-if="about"
+          :markdown="about"
           :extensions="[showdownHighlight]"
         />
       </div>
     </div>
     <div class="center-content">
       <div v-if="!oneProject" class="center-content">
-        <h3>Side Projects</h3>
+        <h1 id="side-projects">Side Projects</h1>
         <div class="project-list">
           <div
             v-for="listing in sideProjects"
@@ -27,7 +33,7 @@
             />
           </div>
         </div>
-        <h3>Side Work</h3>
+        <h1 id="side-work">Side Work</h1>
         <div class="project-list">
           <div
             v-for="listing in sideWork"
@@ -61,7 +67,7 @@ export default {
       project: "",
       oneProject: false,
       showdownHighlight: showdownHighlight,
-      accomplishments: null,
+      about: null,
     }
   },
   computed: {
@@ -83,7 +89,7 @@ export default {
   },
   beforeMount() {
     this.loadProjectOrProjects(this.$route.params)
-    this.getAccomplishments()
+    this.getAbout()
   },
   methods: {
     async getProjects() {
@@ -98,9 +104,9 @@ export default {
         this.project = response
       }
     },
-    getAccomplishments() {
-      this.$storage.get("accomplishments.md").then(async (md) => {
-        this.accomplishments = await this.$storage.axios
+    getAbout() {
+      this.$storage.get("about.md").then(async (md) => {
+        this.about = await this.$storage.axios
           .get(md)
           .then((response) => {
             return response.data
@@ -161,12 +167,26 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.accomplishments {
+.about {
   width: 70vw;
   padding: 2em;
 }
+.row-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.row-nav a {
+  text-decoration: none;
+  color: #f5f5f5;
+}
+.row-nav a:hover {
+  text-decoration: none;
+  color: #3f3f3f;
+}
 .project-list {
-  width: 50vw;
+  width: 80vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem;
