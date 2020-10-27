@@ -122,7 +122,7 @@ export default {
     },
   },
   beforeMount() {
-    this.$storage.get("Jason A. Leo Resume Oct 2020.pdf").then((response) => {
+    this.$storage.get("Jason A. Leo Resume.pdf").then((response) => {
       this.downloadResume = response
     })
   },
