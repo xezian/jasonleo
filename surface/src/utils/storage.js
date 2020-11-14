@@ -1,75 +1,60 @@
 import axios from "axios"
 import { Storage } from "aws-amplify"
 
-let storage
-
-if (process.env.VUE_APP_CONNECT_TO_AWS === "no") {
-  storage = {
-    getBlogPosts: async () => {
-      const data = await readInPosts("/test/blog/index.csv")
-      return [null, data]
-    },
-    getOnePost: async (slug) => {
-      const data = await getThePost(`/test/blog/${slug}.md`)
-      return [null, data]
-    },
-  }
-} else {
-  storage = {
-    getBlogPosts: () => {
-      return Storage.get("index.csv", { customPrefix: { public: "blog/" } })
-        .then(async (response) => {
-          const posts = await readInPosts(response)
-          return [null, posts]
-        })
-        .catch((err) => {
-          console.error(err)
-          return [err, null]
-        })
-    },
-    getOnePost: (slug) => {
-      return Storage.get(`${slug}/${slug}.md`, {
-        customPrefix: { public: "blog/" },
+const storage = {
+  getBlogPosts: () => {
+    return Storage.get("index.csv", { customPrefix: { public: "blog/" } })
+      .then(async (response) => {
+        const posts = await readInPosts(response)
+        return [null, posts]
       })
-        .then(async (response) => {
-          const data = await getThePost(response)
-          return [null, data]
-        })
-        .catch((err) => {
-          console.error(err)
-          return [err, null]
-        })
-    },
-    postToBlog: (postData) => {
-      console.log(postData)
-    },
-    getProjects: () => {
-      return Storage.get("index.csv", { customPrefix: { public: "projects/" } })
-        .then(async (response) => {
-          const posts = await readInPosts(response)
-          return [null, posts]
-        })
-        .catch((err) => {
-          console.error(err)
-          return [err, null]
-        })
-    },
-    getOneProject: (slug) => {
-      return Storage.get(`${slug}.md`, {
-        customPrefix: { public: "projects/" },
+      .catch((err) => {
+        console.error(err)
+        return [err, null]
       })
-        .then(async (response) => {
-          const data = await getThePost(response)
-          return [null, data]
-        })
-        .catch((err) => {
-          console.error(err)
-          return [err, null]
-        })
-    },
-    axios,
-    ...Storage,
-  }
+  },
+  getOnePost: (slug) => {
+    return Storage.get(`${slug}/${slug}.md`, {
+      customPrefix: { public: "blog/" },
+    })
+      .then(async (response) => {
+        const data = await getThePost(response)
+        return [null, data]
+      })
+      .catch((err) => {
+        console.error(err)
+        return [err, null]
+      })
+  },
+  postToBlog: (postData) => {
+    console.log(postData)
+  },
+  getProjects: () => {
+    return Storage.get("index.csv", { customPrefix: { public: "projects/" } })
+      .then(async (response) => {
+        const posts = await readInPosts(response)
+        return [null, posts]
+      })
+      .catch((err) => {
+        console.error(err)
+        return [err, null]
+      })
+  },
+  getOneProject: (slug) => {
+    return Storage.get(`${slug}.md`, {
+      customPrefix: { public: "projects/" },
+    })
+      .then(async (response) => {
+        const data = await getThePost(response)
+        return [null, data]
+      })
+      .catch((err) => {
+        console.error(err)
+        return [err, null]
+      })
+  },
+  axios,
+  ...Storage,
 }
 
 const getThePost = (postMd) => {

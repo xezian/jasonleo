@@ -30,13 +30,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "manage" */ "../pages/Contact.vue"),
   },
-  {
-    path: "/admin",
-    name: "Admin",
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "manage" */ "../pages/Admin.vue"),
-  },
+  // {
+  //   path: "/admin",
+  //   name: "Admin",
+  //   props: true,
+  //   component: () =>
+  //     import(/* webpackChunkName: "manage" */ "../pages/Admin.vue"),
+  // },
   {
     path: "*",
     component: () =>
