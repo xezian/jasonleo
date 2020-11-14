@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!$auth.user" class="admin">
+  <div v-if="$auth.user" class="admin">
     ADMIN
     <button @click="logOut">Bye</button>
     <Post />
@@ -23,9 +23,6 @@ export default {
       username: null,
       password: null,
     }
-  },
-  beforeMount() {
-    this.$auth.currentAuthenticatedUser()
   },
   methods: {
     async logIn() {
