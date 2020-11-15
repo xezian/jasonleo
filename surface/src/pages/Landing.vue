@@ -22,8 +22,8 @@
       </p>
       <div ref="body" class="section section-body">
         <p class="right para">
-          It is great my privilege to share with you this. Maybe today we will
-          imagine the unimaginable.This is an exploration of the wilderness of
+          It is great my privilege to share with you. Maybe today we will
+          imagine the unimaginable. This is an exploration of the wilderness of
           world wide webcraft. Also a demonstration in as ambitious a way as I
           can aspire, of what I am doing with these neo-digital incantations.
           This spellcraft of a sort. These illusions of the liquid crystal
@@ -33,23 +33,25 @@
         <p class="left para">
           In these times, in this context, I feel fortunate. The long drawn
           breath of pause I reminded myself of, has come to settle, in a curve
-          of light, beside my table. I invite this listening moment, to complete
-          the consideration we meant to entertain. Where the end begins, the
-          vision exact, the filter graduates, our home expands, and all our
-          voices in unison advocate an unencumbered togetherness.
+          of light, beside my keyboard, on the wooden surface of the desk. I
+          invite this listening moment, to complete the consideration we meant
+          to entertain. Where the end begins, the vision exact, the filter
+          graduates, our home expands, and all our voices in unison advocate an
+          unencumbered togetherness.
         </p>
         <div class="spacer"></div>
         <p class="right para">
-          So with every one available, and these days as we connect via
-          circumstance and cicuitry &mdash; where the circular vestibule of
-          sudden refraction contracts &mdash; I invited these articulations, and
-          embrace the ways we may in our fulfillment find true resolution in the
-          vast untamed wilderness of ideals. Our closest hearted friendships,
-          and our furthest flung notions, the cacauphony of it all, the din, the
-          restless, the impenetrable darkness of an inward abyss. I invite you
-          to join me, in a reimagining of future purposes, in an outpuring of
-          exhuberent disambiguation, to the depth of our center, to the holder,
-          to the dancer within us, towards becoming true.
+          So with everything available, and without reservation, and these days
+          as we connect via circumstance and cicuitry &mdash; where the circular
+          vestibule of sudden refraction contracts &mdash; I invite these
+          articulations, and embrace the ways we may in our time find true
+          resolution in the vast untamed mare's nest of ideals. Our closest
+          hearted friendships, and our furthest flung notions, the cacauphony of
+          it all, the din, the restlessness, the impenetrable darkness of an
+          inward abyss. I invite you to join me, in a reimagining of future
+          purposes, in an outpuring of exhuberent disambiguation, to the depth
+          of our center, to the holder, to the dancer within us, towards
+          becoming true.
         </p>
         <div class="spacer"></div>
       </div>

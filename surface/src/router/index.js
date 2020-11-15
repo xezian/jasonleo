@@ -40,7 +40,7 @@ const routes = [
   {
     path: "*",
     component: () =>
-      import(/* webpackChunkName: '404' */ "../components/Landing.vue"),
+      import(/* webpackChunkName: '404' */ "../pages/Landing.vue"),
   },
 ]
 
