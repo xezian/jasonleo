@@ -113,17 +113,15 @@ export default {
         this.project = response
       }
     },
-    getAbout() {
-      this.$storage.get("about.md").then(async (md) => {
-        this.about = await this.$storage.axios
-          .get(md)
-          .then((response) => {
-            return response.data
-          })
-          .catch((err) => {
-            console.error(err)
-          })
-      })
+    async getAbout() {
+      this.about = await this.$storage.axios
+        .get("jason-leo/public/about.md")
+        .then((response) => {
+          return response.data
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     },
     handleClick(slug) {
       this.getProject(slug)

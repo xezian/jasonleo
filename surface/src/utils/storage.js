@@ -1,60 +1,23 @@
 import axios from "axios"
-import { Storage } from "aws-amplify"
 
 const storage = {
-  getBlogPosts: () => {
-    return Storage.get("index.csv", { customPrefix: { public: "blog/" } })
-      .then(async (response) => {
-        const posts = await readInPosts(response)
-        return [null, posts]
-      })
-      .catch((err) => {
-        console.error(err)
-        return [err, null]
-      })
+  getBlogPosts: async () => {
+    const posts = await readInPosts("/jason-leo/blog/index.csv")
+    return [null, posts]
   },
-  getOnePost: (slug) => {
-    return Storage.get(`${slug}/${slug}.md`, {
-      customPrefix: { public: "blog/" },
-    })
-      .then(async (response) => {
-        const data = await getThePost(response)
-        return [null, data]
-      })
-      .catch((err) => {
-        console.error(err)
-        return [err, null]
-      })
+  getOnePost: async (slug) => {
+    const posts = await getThePost(`/jason-leo/blog/${slug}/${slug}.md`)
+    return [null, posts]
   },
-  postToBlog: (postData) => {
-    console.log(postData)
+  getProjects: async () => {
+    const posts = await readInPosts("/jason-leo/projects/index.csv")
+    return [null, posts]
   },
-  getProjects: () => {
-    return Storage.get("index.csv", { customPrefix: { public: "projects/" } })
-      .then(async (response) => {
-        const posts = await readInPosts(response)
-        return [null, posts]
-      })
-      .catch((err) => {
-        console.error(err)
-        return [err, null]
-      })
-  },
-  getOneProject: (slug) => {
-    return Storage.get(`${slug}.md`, {
-      customPrefix: { public: "projects/" },
-    })
-      .then(async (response) => {
-        const data = await getThePost(response)
-        return [null, data]
-      })
-      .catch((err) => {
-        console.error(err)
-        return [err, null]
-      })
+  getOneProject: async (slug) => {
+    const posts = await getThePost(`/jason-leo/projects/${slug}/${slug}.md`)
+    return [null, posts]
   },
   axios,
-  ...Storage,
 }
 
 const getThePost = (postMd) => {
