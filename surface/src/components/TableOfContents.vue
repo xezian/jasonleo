@@ -135,6 +135,15 @@ export default {
       bar: false,
     }
   },
+  watch: {
+    $route: function (to, from) {
+      if (to.name === "About") {
+        this.bar = true
+      } else {
+        this.bar = false
+      }
+    },
+  },
   computed: {
     transformToggle() {
       if (this.right) {
