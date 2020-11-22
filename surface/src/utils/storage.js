@@ -48,7 +48,7 @@ const readInPosts = (postCsv) => {
             return [col, commaseps[ix]]
           }),
         )
-        posts.push(onePost)
+        posts.unshift(onePost)
       }
       return posts
     })

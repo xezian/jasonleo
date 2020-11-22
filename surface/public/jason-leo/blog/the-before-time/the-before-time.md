@@ -1,6 +1,6 @@
 Long ago I rambled
 
-![Jason in a pink wig](https://jason-leo.s3.amazonaws.com/blog/images/2020-04-14_15-13.png)
+![Jason in a pink wig](/jason-leo/blog/images/2020-04-14_15-13.png)
 
 There was a time once, and I know many of us to remember it well.
 
