@@ -14,7 +14,7 @@ const storage = {
     return [null, posts]
   },
   getOneProject: async (slug) => {
-    const posts = await getThePost(`/jason-leo/projects/${slug}/${slug}.md`)
+    const posts = await getThePost(`/jason-leo/projects/${slug}.md`)
     return [null, posts]
   },
   axios,
