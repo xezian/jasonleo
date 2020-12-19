@@ -10,7 +10,11 @@
         <p>Title: {{ listing.title }}</p>
         <p>Date: {{ listing.date }}</p>
         <p>Description: {{ listing.description }}</p>
-        <div v-for="tag in listing.tags" :key="tag" class="tag-badge">
+        <div
+          v-for="tag in listing.tags.split(',')"
+          :key="tag"
+          class="tag-badge"
+        >
           {{ tag }}
         </div>
       </div>
@@ -46,7 +50,9 @@ export default {
     async getPosts() {
       const [_error, response] = await this.$storage.getBlogPosts()
       if (response) {
-        this.posts = response
+        this.posts = response.sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
+        )
       }
     },
     async getPost(slug) {
