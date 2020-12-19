@@ -53,8 +53,43 @@ const readInPosts = (postCsv) => {
 
 This works, but it has limitations. For one thing, look at the block that starts `if (ix === columns.length - 1)`. This part parses the multiple additionally comma seperated values inside the quotation marks at the end. But I can't pass values like that anywhere else. If a description has a comma in it, I have no way of escaping it! These and probably countless other issues make me think I should use an external library for this. Time to do some research...
 
-## Review my options
+After reviewing my options, I've decided to use PapaParse. 
 
-### [PapaParse](https://www.papaparse.com/)
+### [PapaParse](https://github.com/mholt/PapaParse)
 
-This one is apparently the most popular so let's have a look.
+This is definitely the most popular csv parser capable of deciphering csv data client side. At first glance this looks very likely to do the trick here. It seems I can pass in a csv and an optional config argument, and get back a json object. At present, it has 111 contributors, 73 realeases, 9.3 thousand stars on GitHub. Also appears to be capable of reverse parsing, which I will need if I ever want to pull the `/public` folder back into it's own s3 bucket and create the functionality to allow posting from the app. 
+
+1. Install PapaParse: `npm install papaparse`
+2. Update parse function to use this Papa
+  (This is close, but a couple more steps are needed)
+```js
+const readInPosts = (postCsv) => {
+   return axios
+   .get(postCsv)
+   .then((response) => {   
+      const posts = Papa.parse(response.data, { header: true })
+      return posts.data
+   })
+   .catch((err) => {
+      console.error(err)
+   })
+}
+```
+3. Update the interpretation of the tags field (was an array)
+```js
+<div
+ v-for="tag in listing.tags.split(',')"  // was v-for="tag in listing.tags"
+ :key="tag"
+ class="tag-badge"
+>
+ {{ tag }}
+</div>
+```
+4. Order by date
+  This wasn't actually happening before, `unshift` was faking it by ordering in reverse. I decided to mutate the array essentially after receiving the response from the `readInPosts()` function.  
+```js
+this.posts = response.sort(
+ (a, b) => new Date(b.date) - new Date(a.date),
+)
+```
+### Nice! 

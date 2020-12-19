@@ -1,4 +1,5 @@
 import axios from "axios"
+import Papa from "papaparse"
 
 const storage = {
   getBlogPosts: async () => {
@@ -35,22 +36,8 @@ const readInPosts = (postCsv) => {
   return axios
     .get(postCsv)
     .then((response) => {
-      const lines = response.data.split(/\r\n|\n/)
-      const posts = []
-      for (let i = 1; i < lines.length; i++) {
-        const columns = lines[0].split(",")
-        const commaseps = lines[i].split(/,|"/)
-        const onePost = Object.fromEntries(
-          columns.map((col, ix) => {
-            if (ix === columns.length - 1) {
-              commaseps[ix] = commaseps.slice(ix + 1, commaseps.length - 1)
-            }
-            return [col, commaseps[ix]]
-          }),
-        )
-        posts.unshift(onePost)
-      }
-      return posts
+      const posts = Papa.parse(response.data, { header: true })
+      return posts.data
     })
     .catch((err) => {
       console.error(err)
