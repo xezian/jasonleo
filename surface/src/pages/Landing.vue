@@ -17,7 +17,7 @@
       <p class="right para disclaimer">
         Please feel free to scroll around, click, input, observe, and inspect
         anything you like. I have tried to represent myself accurately in and
-        around these pages while experimenting Frontend development.
+        around these pages while experimenting with frontend web development.
       </p>
       <div ref="body" class="section-body">
         <VueShowdown

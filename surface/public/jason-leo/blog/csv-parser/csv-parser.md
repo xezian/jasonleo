@@ -52,3 +52,9 @@ const readInPosts = (postCsv) => {
 ```
 
 This works, but it has limitations. For one thing, look at the block that starts `if (ix === columns.length - 1)`. This part parses the multiple additionally comma seperated values inside the quotation marks at the end. But I can't pass values like that anywhere else. If a description has a comma in it, I have no way of escaping it! These and probably countless other issues make me think I should use an external library for this. Time to do some research...
+
+## Review my options
+
+### [PapaParse](https://www.papaparse.com/)
+
+This one is apparently the most popular so let's have a look.
