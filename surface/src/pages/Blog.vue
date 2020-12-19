@@ -29,7 +29,6 @@
 
 <script>
 import showdownHighlight from "showdown-highlight"
-import { cloneDeep } from "lodash"
 export default {
   data: function () {
     return {
