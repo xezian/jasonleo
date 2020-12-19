@@ -80,7 +80,7 @@ export default {
     return {
       projects: [],
       project: "",
-      showdownHighlight: showdownHighlight,
+      showdownHighlight,
       about: null,
     }
   },
