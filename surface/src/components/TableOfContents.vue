@@ -99,10 +99,17 @@
         </ul>
       </div>
     </transition>
+    <div v-show="hiFivin" class="hi-five-area">
+      <div>
+        <div ref="hifive" class="hi"><h1>Hi 5!</h1></div>
+        <HelloIcon ref="fiver" fill="#eaf2ff" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { gsap } from "gsap"
 import HelloIcon from "../assets/hand.svg"
 import ContactIcon from "../assets/card-account-mail.svg"
 import BlogIcon from "../assets/drawing-box.svg"
@@ -133,16 +140,8 @@ export default {
       hovered: "",
       right: false,
       bar: false,
+      hiFivin: false,
     }
-  },
-  watch: {
-    $route: function (to, from) {
-      if (to.name === "About") {
-        this.bar = true
-      } else {
-        this.bar = false
-      }
-    },
   },
   computed: {
     transformToggle() {
@@ -160,6 +159,15 @@ export default {
       return this.right ? "tab-of-con-right" : "tab-of-con-left"
     },
   },
+  watch: {
+    $route: function (to) {
+      if (to.name === "About") {
+        this.bar = true
+      } else {
+        this.bar = false
+      }
+    },
+  },
   beforeMount() {
     if (this.open) {
       this.isOpen = true
@@ -167,7 +175,37 @@ export default {
   },
   methods: {
     hiFive() {
-      alert("hi five")
+      if (!this.hiFivin) {
+        this.hiFivin = true
+        const tl = gsap.timeline({
+          onComplete: () => {
+            this.hiFivin = false
+          },
+        })
+        tl.to(this.$refs.fiver, {
+          opacity: 0.6,
+          duration: 0,
+        })
+          .to(this.$refs.fiver, {
+            scale: 300,
+            duration: 0.7,
+          })
+          .to(this.$refs.hifive, {
+            opacity: 1,
+            scale: 10,
+          })
+          .to(this.$refs.fiver, {
+            scale: 1,
+            duration: 0.3,
+          })
+          .to(this.$refs.hifive, {
+            opacity: 0,
+            scale: 3,
+          })
+          .to(this.$refs.fiver, {
+            opacity: 0,
+          })
+      }
     },
     flipIt() {
       this.right = !this.right
@@ -288,6 +326,23 @@ export default {
 .toggle-right {
   left: auto;
   right: 7px;
+}
+.hi-five-area {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.hi {
+  opacity: 0;
+  color: #0c4549;
+}
+#hi-five {
+  max-height: fit-content;
+  opacity: 0;
 }
 @media only screen and (max-width: 800px) {
   .tab-of-con div.navlink a {
