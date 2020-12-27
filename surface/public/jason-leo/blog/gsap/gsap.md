@@ -84,12 +84,15 @@ methods: {
   height: 100vh;
   display: grid;
   place-items: center;
+  z-index: 1;
 }
 .hi {
+  position: absolute;
   opacity: 0;
   color: #0c4549;
 }
 #hi-five {
+  position: absolute;
   max-height: fit-content;
   opacity: 0;
 }

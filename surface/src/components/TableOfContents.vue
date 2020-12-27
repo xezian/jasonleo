@@ -183,7 +183,7 @@ export default {
           },
         })
         tl.to(this.$refs.fiver, {
-          opacity: 0.6,
+          opacity: 0.5,
           duration: 0,
         })
           .to(this.$refs.fiver, {
@@ -192,7 +192,7 @@ export default {
           })
           .to(this.$refs.hifive, {
             opacity: 1,
-            scale: 10,
+            scale: 3,
           })
           .to(this.$refs.fiver, {
             scale: 1,
@@ -200,7 +200,7 @@ export default {
           })
           .to(this.$refs.hifive, {
             opacity: 0,
-            scale: 3,
+            scale: 2,
           })
           .to(this.$refs.fiver, {
             opacity: 0,
@@ -335,12 +335,15 @@ export default {
   height: 100vh;
   display: grid;
   place-items: center;
+  z-index: 1;
 }
 .hi {
+  position: absolute;
   opacity: 0;
   color: #0c4549;
 }
 #hi-five {
+  position: absolute;
   max-height: fit-content;
   opacity: 0;
 }
