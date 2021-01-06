@@ -113,7 +113,7 @@ export default {
 .blog-listing {
   /* border: 1px solid black; */
   border-radius: 10px 60px 50px 10px;
-  width: 30vw;
+  width: 60vw;
   cursor: url("/brackets.ico"), auto;
   padding: 15px;
   margin: 10px 0;
