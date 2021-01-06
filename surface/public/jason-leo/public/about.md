@@ -1,17 +1,15 @@
 # About Me
 
-I am a 38 year old developer, transitioning to Brunswick, ME from Tucson, AZ. I'm currently working at the University of Arizona (remotely).
+Here are some facts. As the new year dawns, in January of 2021, I am a 38 year old human undergoing a physical relocation of my family from Tucson, AZ to Brunswick, ME, while working remotely on web application development for the University of Arizona.
 
-I started learning to code when I was 12 or 13; if you do the math that's 1996ish. After a short stint taking technical support calls for my father's company &mdash; an early ISP in VT called SoverNet &mdash; I decided computers were not interesting, and put the whole thing down for around 20 years.
-
-Which brings me to the summer of 2017 &mdash; realizing I'd obviously been using computers for the last 20 years anyways, for so many things, like music, writing, communication, work, education, and entertainment &mdash; the woman who would become my wife sent me a link for a coding bootcamp and encouraged me to consider it. I shortly decided enroll, and from that moment forward, I have been creating for the web.
+Why did I begin coding? I was into my thirties, working as a bartender, almost a decade had passed after having attained a BA Liberal Arts, and I began learning how.
 
 <details>
 <summary style="display:flex;flex-direction:row;">
 <h2 id="accomplishments">Professional Accomplishments</h2>
 </summary>
 
-I was hired for my first dev job at Simpleview starting one month prior to the end of the 6 month long bootcamp. Since then, now in my second job, I've balanced full time development work with family, music, and active side-projects amd side-work to advance my aptitude and experience as a developer.
+I was hired for my first dev job at Simpleview starting one month prior to the end of a 6 month long bootcamp. Since then, now in my second job, I've balanced full time development work with family, music, and active side-projects amd side-work to advance my aptitude and experience as a developer.
 
 #### Simpleview (<a href="https://www.simpleviewinc.com" target="_blank" noopener noreferrer>https://www.simpleviewinc.com</a>)
 
