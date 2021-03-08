@@ -50,6 +50,7 @@ export default {
     async getPosts() {
       const [_error, response] = await this.$storage.getBlogPosts()
       if (response) {
+        console.log(response)
         this.posts = response.sort(
           (a, b) => new Date(b.date) - new Date(a.date),
         )

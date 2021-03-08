@@ -67,7 +67,10 @@ const readInPosts = (postCsv) => {
    return axios
    .get(postCsv)
    .then((response) => {   
-      const posts = Papa.parse(response.data, { header: true })
+      const posts = Papa.parse(response.data, { 
+        skipEmptyLines: true, // otherwise the blank line at the end of file counts as a row
+        header: true 
+      })
       return posts.data
    })
    .catch((err) => {
