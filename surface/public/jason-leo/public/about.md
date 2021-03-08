@@ -1,6 +1,6 @@
 # About Me
 
-Here are some facts. As the new year dawns, in January of 2021, I am a 38 year old human undergoing a physical relocation of my family from Tucson, AZ to Brunswick, ME, while working remotely on web application development for the University of Arizona.
+Here are some facts. I am a human person named Jason Leo, in my mid to late thrities, living in Brunswick, ME, while working remotely on web application development for the University of Arizona.
 
 Why did I begin coding? I was into my thirties, working as a bartender, almost a decade had passed after having attained a BA Liberal Arts, and I began learning how.
 
