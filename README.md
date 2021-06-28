@@ -28,6 +28,7 @@ aws_secret_access_key = fakesecret
 [jason] contains personal creds
 [fake] contains fake creds (for so as to satisfy localstack)
 
+- Pull the contents of the bucket to locally `aws --profile jason s3 sync s3://jason-leo ./jason-leo`
 - Build (if unbuilt) and run the localstack with `docker-compose up -d`
 - Create a bucket `aws --profile fake --endpoint-url=http://localhost:4566 s3 mb s3://jason-leo`
 - Copy files and make publically readable the bucket `aws --profile fake --endpoint-url=http://localhost:4566 s3 sync ./jason-leo/ s3://jason-leo --acl public-read`
