@@ -3,24 +3,24 @@ import Papa from "papaparse"
 
 const baseUrl =
   process.env.NODE_ENV == "development"
-    ? "http://localhost:4566"
+    ? "http://localhost:4566/jason-leo"
     : "https://jason-leo.s3.us-west-1.amazonaws.com"
 
 const storage = {
   getBlogPosts: async () => {
-    const posts = await readContentsCsv("/jason-leo/blog/index.csv")
+    const posts = await readContentsCsv("/blog/index.csv")
     return [null, posts]
   },
   getOnePost: async (slug) => {
-    const posts = await getThePost(`/jason-leo/blog/${slug}/${slug}.md`)
+    const posts = await getThePost(`/blog/${slug}/${slug}.md`)
     return [null, posts]
   },
   getProjects: async () => {
-    const posts = await readContentsCsv("/jason-leo/projects/index.csv")
+    const posts = await readContentsCsv("/projects/index.csv")
     return [null, posts]
   },
   getOneProject: async (slug) => {
-    const posts = await getThePost(`/jason-leo/projects/${slug}.md`)
+    const posts = await getThePost(`/projects/${slug}.md`)
     return [null, posts]
   },
   axios,
