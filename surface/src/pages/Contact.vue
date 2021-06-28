@@ -83,7 +83,7 @@
         @mouseover="hovered = 'resume'"
         @mouseleave="hovered = ''"
       >
-        <a href="jason-leo/public/Jason A. Leo Resume.pdf" target="_blank">
+        <a :href="`${$bucketUrl}/Jason A. Leo Resume.pdf`" target="_blank">
           <ResumeIcon
             :transform="hovered !== 'resume' ? 'scale(1.4)' : 'scale(1.5)'"
             :fill="hovered !== 'resume' ? '#eaf2ff' : '#fff'"

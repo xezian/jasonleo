@@ -113,7 +113,7 @@ export default {
     },
     async getHome() {
       this.home = await this.$storage.axios
-        .get("/jason-leo/public/home.md")
+        .get(`${this.$bucketUrl}/public/home.md`)
         .then((response) => {
           return response.data
         })

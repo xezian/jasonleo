@@ -6,6 +6,11 @@ import storage from "./utils/storage"
 
 Vue.config.productionTip = false
 Vue.prototype.$storage = storage
+Vue.prototype.$bucketUrl =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:4566/jason-leo"
+    : "https://jason-leo.s3.us-west-1.amazonaws.com"
+
 Vue.use(VueShowdown, {
   flavor: "github",
 })

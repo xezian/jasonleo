@@ -1,9 +1,14 @@
 import axios from "axios"
 import Papa from "papaparse"
 
+const baseUrl =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:4566"
+    : "https://jason-leo.s3.us-west-1.amazonaws.com"
+
 const storage = {
   getBlogPosts: async () => {
-    const posts = await readInPosts("/jason-leo/blog/index.csv")
+    const posts = await readContentsCsv("/jason-leo/blog/index.csv")
     return [null, posts]
   },
   getOnePost: async (slug) => {
@@ -11,7 +16,7 @@ const storage = {
     return [null, posts]
   },
   getProjects: async () => {
-    const posts = await readInPosts("/jason-leo/projects/index.csv")
+    const posts = await readContentsCsv("/jason-leo/projects/index.csv")
     return [null, posts]
   },
   getOneProject: async (slug) => {
@@ -23,7 +28,7 @@ const storage = {
 
 const getThePost = (postMd) => {
   return axios
-    .get(postMd)
+    .get(baseUrl + postMd)
     .then((response) => {
       return response.data
     })
@@ -32,15 +37,14 @@ const getThePost = (postMd) => {
     })
 }
 
-const readInPosts = (postCsv) => {
+const readContentsCsv = (postCsv) => {
   return axios
-    .get(postCsv)
+    .get(baseUrl + postCsv)
     .then((response) => {
       const posts = Papa.parse(response.data, {
         skipEmptyLines: true,
         header: true,
       })
-      console.log(posts.data)
       return posts.data
     })
     .catch((err) => {

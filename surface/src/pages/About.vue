@@ -32,7 +32,7 @@
             <div class="icon-row">
               <div class="icon">
                 <object
-                  :data="`/jason-leo/projects/images/${listing.cover}`"
+                  :data="`${$bucketUrl}/projects/images/${listing.cover}`"
                   type="image/svg+xml"
                 />
               </div>
@@ -54,7 +54,7 @@
             <div class="icon-row">
               <div class="icon">
                 <object
-                  :data="`/jason-leo/projects/images/${listing.cover}`"
+                  :data="`${$bucketUrl}/projects/images/${listing.cover}`"
                   type="image/svg+xml"
                 />
               </div>
@@ -115,7 +115,7 @@ export default {
     },
     async getAbout() {
       this.about = await this.$storage.axios
-        .get("/jason-leo/public/about.md")
+        .get(`${this.$bucketUrl}/public/about.md`)
         .then((response) => {
           return response.data
         })
