@@ -130,21 +130,22 @@ export default {
   margin: 2px 0;
 }
 .blog-post {
-  width: 80vw;
+  width: 70vw;
   padding: 2em;
   background: linear-gradient(to right top, #e0bed6, #809fa1) fixed;
+  overflow: hidden;
 }
 .blog-post >>> code {
   padding: 2px 5px;
   min-width: 100%;
   border-radius: 5px;
   background-color: lightgoldenrodyellow;
-  color: dimgray;
+  color: rgb(7, 5, 5);
 }
 .blog-post >>> pre code {
   padding: 10px;
   display: inline-block;
-  background-color: dimgray;
+  background-color: rgb(7, 5, 5);
   color: lightgoldenrodyellow;
 }
 .blog-post >>> blockquote {

@@ -18,6 +18,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&family=Thasadith:wght@700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/base16/espresso.min.css");
 html,
 body {
   margin: 0;
