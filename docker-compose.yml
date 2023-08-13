@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   localstack:
-    image: localstack/localstack
+    image: localstack/localstack:latest
     container_name: localstack_s3_blog
     network_mode: bridge
     ports:
@@ -10,6 +10,7 @@ services:
       - SERVICES=s3
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
+      - EXTRA_CORS_ALLOWED_ORIGINS=http://localhost:8080.
     volumes:
       - "./.localstack:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"

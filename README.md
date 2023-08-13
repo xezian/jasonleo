@@ -16,22 +16,18 @@ Here's the way my aws credentials file looks:
 [default]
 aws_access_key_id = ...
 aws_secret_access_key = ...
-
-[jason]
-aws_access_key_id = ...
-aws_secret_access_key = ...
 [fake]
 aws_access_key_id = fakekey
 aws_secret_access_key = fakesecret
 ```
-[default] contains work creds (I will always be overriding this)
-[jason] contains personal creds
+[default] contains personal creds
 [fake] contains fake creds (for so as to satisfy localstack)
 
 - Pull the contents of the bucket to locally `aws --profile jason s3 sync s3://jason-leo ./jason-leo`
 - Build (if unbuilt) and run the localstack with `docker-compose up -d`
 - Create a bucket `aws --profile fake --endpoint-url=http://localhost:4566 s3 mb s3://jason-leo`
 - Copy files and make publically readable the bucket `aws --profile fake --endpoint-url=http://localhost:4566 s3 sync ./jason-leo/ s3://jason-leo --acl public-read`
+- Set cors-configuration on bucket `aws --endpoint-url=http://localhost:4566 --profile fake s3api put-bucket-cors --bucket jason-leo --cors-configuration file://cors.json`
 
 ## Deploy to the real bucket (muchly similar)
 
