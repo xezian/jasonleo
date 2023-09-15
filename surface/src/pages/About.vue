@@ -2,11 +2,10 @@
   <div class="everything">
     <div class="center-content">
       <div class="row-nav">
-        <a href="#accomplishments">Professional Accomplishments</a>
-        <a href="#technologies">Technologies and Experience</a>
-        <a href="#off-sprint">Off Sprint</a>
-        <a href="#side-projects">Side Projects</a>
-        <a href="#side-work">Side Work</a>
+        <a href="#section-one">I would rather</a>
+        <a href="#technologies">Technology is an Experience</a>
+        <a href="#dreamshapes">Dreamshapes</a>
+        <a href="#side-projects">Sides</a>
       </div>
       <div class="about">
         <VueShowdown
@@ -22,28 +21,6 @@
         <div class="project-list">
           <div
             v-for="listing in sideProjects"
-            :key="listing.slug"
-            class="listing"
-            @click="handleClick(listing.slug)"
-          >
-            <h2>
-              {{ listing.title }}
-            </h2>
-            <div class="icon-row">
-              <div class="icon">
-                <object
-                  :data="`${$bucketUrl}/projects/images/${listing.cover}`"
-                  type="image/svg+xml"
-                />
-              </div>
-            </div>
-            <p class="describe">{{ listing.description }}</p>
-          </div>
-        </div>
-        <h1 id="side-work">Side Work</h1>
-        <div class="project-list">
-          <div
-            v-for="listing in sideWork"
             :key="listing.slug"
             class="listing"
             @click="handleClick(listing.slug)"
@@ -88,11 +65,6 @@ export default {
     sideProjects() {
       return this.projects.filter((project) => {
         return project.tags.includes("side-project")
-      })
-    },
-    sideWork() {
-      return this.projects.filter((project) => {
-        return project.tags.includes("side-work")
       })
     },
   },
